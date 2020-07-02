@@ -15,7 +15,14 @@ class Outer {
         new Inner().resetAndPrint();
     }
 
+    // Shows that private members of inner class are accessible from the outer
+    String getInnerStringE08() {
+        return new Inner().sE08;
+    }
+
     class Inner {
+        private final String sE08 = "E08";
+
         void resetAndPrint() {
             number = 0;
             f();
@@ -25,6 +32,8 @@ class Outer {
 
 public class E07_ProtectedFromInner {
     public static void main(String[] args) {
-        new Outer().callInnerClassMethod();
+        Outer o = new Outer();
+        o.callInnerClassMethod();
+        System.out.println(o.getInnerStringE08());
     }
 }
