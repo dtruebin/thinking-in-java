@@ -25,6 +25,13 @@ public class Sequence {
             System.out.print(selector.current() + " ");
             selector.next();
         }
+
+        System.out.println(sequence.check());
+    }
+
+    // E04
+    boolean check() {
+        return this == ((SequenceSelector) selector()).getSequence();
     }
 
     public void add(Object x) {
@@ -48,6 +55,11 @@ public class Sequence {
 
         public void next() {
             if (i < items.length) i++;
+        }
+
+        // E04
+        public Sequence getSequence() {
+            return Sequence.this;
         }
     }
 }
