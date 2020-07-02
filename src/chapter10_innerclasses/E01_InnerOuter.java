@@ -1,0 +1,20 @@
+package chapter10_innerclasses;
+
+class Outer {
+    Inner createInner() {
+        return new Inner();
+    }
+
+    class Inner {
+        {
+            System.out.println("Inner object created");
+        }
+    }
+}
+
+public class E01_InnerOuter {
+    public static void main(String[] args) {
+        Outer outer = new Outer();
+        Outer.Inner inner = outer.createInner();
+    }
+}
