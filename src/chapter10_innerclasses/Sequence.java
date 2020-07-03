@@ -20,7 +20,15 @@ public class Sequence {
     public static void main(String[] args) {
         Sequence sequence = new Sequence(10);
         for (int i = 0; i < 10; i++) sequence.add(Integer.toString(i));
-        Selector selector = sequence.selector();
+
+        Selector selector;
+
+        // E16
+//        selector = sequence.selector();
+
+        // E20
+        selector = sequence.reverseSelector();
+
         while (!selector.end()) {
             System.out.print(selector.current() + " ");
             selector.next();
@@ -42,6 +50,10 @@ public class Sequence {
         return new SequenceSelector();
     }
 
+    public Selector reverseSelector() {
+        return new ReverseSequenceSelector();
+    }
+
     private class SequenceSelector implements Selector {
         private int i = 0;
 
@@ -60,6 +72,29 @@ public class Sequence {
         // E04
         public Sequence getSequence() {
             return Sequence.this;
+        }
+    }
+
+    /**
+     * E20
+     */
+    private class ReverseSequenceSelector implements Selector {
+
+        private int i = items.length - 1;
+
+        @Override
+        public boolean end() {
+            return i < 0;
+        }
+
+        @Override
+        public Object current() {
+            return items[i];
+        }
+
+        @Override
+        public void next() {
+            if (i >= 0) i--;
         }
     }
 }
