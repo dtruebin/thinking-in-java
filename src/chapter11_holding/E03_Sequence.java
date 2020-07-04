@@ -1,5 +1,8 @@
 package chapter11_holding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 interface Selector {
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     boolean end();
@@ -10,15 +13,15 @@ interface Selector {
 }
 
 class Sequence {
-    private final Object[] items;
-    private int next = 0;
+    private final List<Object> items;
+    private final int next = 0;
 
     public Sequence(int size) {
-        items = new Object[size];
+        items = new ArrayList<>(size);
     }
 
     public void add(Object x) {
-        if (next < items.length) items[next++] = x;
+        items.add(x);
     }
 
     public Selector selector() {
@@ -34,24 +37,23 @@ class Sequence {
 
         @Override
         public boolean end() {
-            return i == items.length;
+            return i == items.size();
         }
 
         @Override
         public Object current() {
-            return items[i];
+            return items.get(i);
         }
 
         @Override
         public void next() {
-            if (i < items.length) i++;
+            if (i < items.size()) i++;
         }
     }
 
-
     private class ReverseSequenceSelector implements Selector {
 
-        private int i = items.length - 1;
+        private int i = items.size() - 1;
 
         @Override
         public boolean end() {
@@ -60,7 +62,7 @@ class Sequence {
 
         @Override
         public Object current() {
-            return items[i];
+            return items.get(i);
         }
 
         @Override
