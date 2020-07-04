@@ -14,10 +14,9 @@ interface Selector {
 
 class Sequence {
     private final List<Object> items;
-    private final int next = 0;
 
-    public Sequence(int size) {
-        items = new ArrayList<>(size);
+    public Sequence() {
+        items = new ArrayList<>();
     }
 
     public void add(Object x) {
@@ -74,7 +73,7 @@ class Sequence {
 
 public class E03_Sequence {
     public static void main(String[] args) {
-        Sequence sequence = new Sequence(10);
+        Sequence sequence = new Sequence();
         for (int i = 0; i < 10; i++) sequence.add(Integer.toString(i));
 
         Selector selector;
