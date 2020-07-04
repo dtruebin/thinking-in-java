@@ -3,9 +3,10 @@ package chapter10_innerclasses;
 import chapter10_innerclasses.controller.Controller;
 import chapter10_innerclasses.controller.Event;
 
-public class GreenhouseControls extends Controller {
+public class E24_GreenhouseControls extends Controller {
     private boolean light = false;
     private String thermostat = "Day";
+    private boolean fans = false;
 
     public class LightOn extends Event {
         public LightOn(long delayTime) {
@@ -71,10 +72,43 @@ public class GreenhouseControls extends Controller {
         }
     }
 
+    public class FansOn extends Event {
+
+        public FansOn(long delayTime) {
+            super(delayTime);
+        }
+
+        @Override
+        public void action() {
+            fans = true;
+        }
+
+        @Override
+        public String toString() {
+            return "Fans are on";
+        }
+    }
+
+    public class FansOff extends Event {
+
+        public FansOff(long delayTime) {
+            super(delayTime);
+        }
+
+        @Override
+        public void action() {
+            fans = false;
+        }
+
+        @Override
+        public String toString() {
+            return "Fans are off";
+        }
+    }
+
     // An example of an action() that inserts a
     // new one of itself into the event list:
     public class Bell extends Event {
-
         public Bell(long delayTime) {
             super(delayTime);
         }
@@ -134,5 +168,4 @@ public class GreenhouseControls extends Controller {
             return "Terminating";
         }
     }
-
 }
