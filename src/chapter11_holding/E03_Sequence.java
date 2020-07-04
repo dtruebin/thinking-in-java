@@ -13,11 +13,7 @@ interface Selector {
 }
 
 class Sequence {
-    private final List<Object> items;
-
-    public Sequence() {
-        items = new ArrayList<>();
-    }
+    private final List<Object> items = new ArrayList<>();
 
     public void add(Object x) {
         items.add(x);
