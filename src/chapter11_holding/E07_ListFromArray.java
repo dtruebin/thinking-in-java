@@ -29,8 +29,16 @@ public class E07_ListFromArray {
     public static void main(String[] args) {
         Phone[] phones = {new Phone(4), new Phone(5), new Phone(5.5f), new Phone(7)};
         List<Phone> phoneList = new ArrayList<>(Arrays.asList(phones));
+        System.out.println(phoneList);
+
         List<Phone> phoneList5 = phoneList.subList(1, 3);
-        phoneList.removeAll(phoneList5);
+        System.out.println(phoneList5);
+
+        //Structural modification of the backing list, not good!
+        //phoneList.removeAll(phoneList5);
+        //Instead, better:
+        phoneList5.clear();
+
         System.out.println(phoneList);
     }
 }
