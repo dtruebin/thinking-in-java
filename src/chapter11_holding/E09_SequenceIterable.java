@@ -1,6 +1,7 @@
 package chapter11_holding;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 class SequenceIterable {
@@ -10,51 +11,8 @@ class SequenceIterable {
         items.add(x);
     }
 
-    public Selector selector() {
-        return new SequenceSelector();
-    }
-
-    public Selector reverseSelector() {
-        return new ReverseSequenceSelector();
-    }
-
-    private class SequenceSelector implements Selector {
-        private int i = 0;
-
-        @Override
-        public boolean end() {
-            return i == items.size();
-        }
-
-        @Override
-        public Object current() {
-            return items.get(i);
-        }
-
-        @Override
-        public void next() {
-            if (i < items.size()) i++;
-        }
-    }
-
-    private class ReverseSequenceSelector implements Selector {
-
-        private int i = items.size() - 1;
-
-        @Override
-        public boolean end() {
-            return i < 0;
-        }
-
-        @Override
-        public Object current() {
-            return items.get(i);
-        }
-
-        @Override
-        public void next() {
-            if (i >= 0) i--;
-        }
+    public Iterator<Object> iterator() {
+        return items.iterator();
     }
 }
 
@@ -63,20 +21,10 @@ public class E09_SequenceIterable {
         SequenceIterable sequence = new SequenceIterable();
         for (int i = 0; i < 10; i++) sequence.add(Integer.toString(i));
 
-        Selector selector;
-
-        selector = sequence.selector();
-        while (!selector.end()) {
-            System.out.print(selector.current() + " ");
-            selector.next();
+        Iterator<Object> it = sequence.iterator();
+        while (it.hasNext()) {
+            System.out.print(it.next() + " ");
         }
-
         System.out.println();
-
-        selector = sequence.reverseSelector();
-        while (!selector.end()) {
-            System.out.print(selector.current() + " ");
-            selector.next();
-        }
     }
 }
