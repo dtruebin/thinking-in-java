@@ -1,6 +1,7 @@
 package chapter11_holding;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class E08_GerbilHoppingIterator {
@@ -11,9 +12,10 @@ public class E08_GerbilHoppingIterator {
             gerbilList.add(new Gerbil());
         }
 
-        //noinspection ForLoopReplaceableByForEach
-        for (int i = 0; i < gerbilList.size(); i++) {
-            gerbilList.get(i).hop();
+        Iterator<Gerbil> it = gerbilList.iterator();
+        //noinspection WhileLoopReplaceableByForEach
+        while (it.hasNext()) {
+            it.next().hop();
         }
     }
 }
