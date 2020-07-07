@@ -8,20 +8,27 @@ package chapter11_holding;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 public class E16_SetVowels {
-    private static final HashSet<Character> VOWELS_SET = new HashSet<>(
+    private static final Set<Character> VOWELS_SET = new HashSet<>(
             Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U', 'y', 'Y'));
 
     public static void main(String[] args) {
-        String sentence = "This is a sentence containing some words that Olga might like.";
-        int countVowelsSentence = 0;
+        String sentence = "This is some sentence containing some words that Olga might like.";
 
-        System.out.println("Counting vowels in each word:");
-        for (String word : sentence.split("\\W")) {
+        int countVowelsSentence = 0;
+        Set<String> processedWords = new HashSet<>();
+
+        System.out.println("Counting vowels in each unique word:");
+        for (String word : sentence.toLowerCase().split("\\W")) {
             int countVowelsWord = countVowels(word);
             countVowelsSentence += countVowelsWord;
-            System.out.println(word + " - " + countVowelsWord);
+
+            if (!processedWords.contains(word)) {
+                processedWords.add(word);
+                System.out.println(word + " - " + countVowelsWord);
+            }
         }
 
         System.out.println("Total number of vowels is " + countVowelsSentence);
