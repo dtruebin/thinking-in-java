@@ -15,13 +15,16 @@ public class E16_SetVowels {
 
     public static void main(String[] args) {
         String sentence = "This is a sentence containing some words that Olga might like.";
+        int countVowelsSentence = 0;
 
         System.out.println("Counting vowels in each word:");
         for (String word : sentence.split("\\W")) {
-            System.out.println(word + " - " + countVowels(word));
+            int countVowelsWord = countVowels(word);
+            countVowelsSentence += countVowelsWord;
+            System.out.println(word + " - " + countVowelsWord);
         }
 
-        System.out.println("Total number of vowels is " + countVowels(sentence));
+        System.out.println("Total number of vowels is " + countVowelsSentence);
     }
 
     static int countVowels(String str) {
