@@ -4,24 +4,30 @@ Modify Exercise 16 so that you keep a count of the occurrence of each vowel.
 
 package chapter11_holding;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class E20_SetVowelsEachVowelCount {
-    private static final Set<Character> VOWELS_SET = new HashSet<>(
-            Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U', 'y', 'Y'));
+    private static final Set<Character> VOWELS_SET_LOWERCASE = new HashSet<>(
+            Arrays.asList('a', 'e', 'i', 'o', 'u', 'y'));
 
     public static void main(String[] args) {
         String sentence = "This is some sentence containing some words that Olga might like.";
 
-        int countVowelsSentence = 0;
+        Map<Character, Integer> countVowelsSentence = new HashMap<>();
         Set<String> processedWords = new HashSet<>();
 
         System.out.println("Counting vowels in each unique word:");
         for (String word : sentence.toLowerCase().split("\\W")) {
-            int countVowelsWord = countVowels(word);
-            countVowelsSentence += countVowelsWord;
+            Map<Character, Integer> countVowelsWord = countVowels(word);
+
+            // Update sentence totals
+            for (Character c : countVowelsWord.keySet()) {
+                Integer countVowelsSentenceValue =
+                        countVowelsSentence.get(c) == null ?
+                                countVowelsWord.get(c) :
+                                countVowelsSentence.get(c) + countVowelsWord.get(c);
+                countVowelsSentence.put(c, countVowelsSentenceValue);
+            }
 
             if (!processedWords.contains(word)) {
                 processedWords.add(word);
@@ -32,15 +38,15 @@ public class E20_SetVowelsEachVowelCount {
         System.out.println("Total number of vowels is " + countVowelsSentence);
     }
 
-    static int countVowels(String str) {
-        int count = 0;
+    static Map<Character, Integer> countVowels(String str) {
+        Map<Character, Integer> result = new HashMap<>();
 
         for (Character c : str.toCharArray()) {
-            if (VOWELS_SET.contains(c)) {
-                count++;
+            if (VOWELS_SET_LOWERCASE.contains(c)) {
+                result.put(c, result.get(c) == null ? 1 : result.get(c) + 1);
             }
         }
 
-        return count;
+        return result;
     }
 }
