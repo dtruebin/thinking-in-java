@@ -2,13 +2,16 @@
 Modify the previous exercise so that it uses a class containing a String and
 a count field to store each different word, and a Set of these objects to
 maintain the list of words.
+
+Additionally, try a TreeSet instead of a bare HashSet to maintain the list of
+words, and compare what (if any) improvement this makes to the program.
  */
 
 package chapter11_holding;
 
 import java.util.*;
 
-class Word {
+class Word implements Comparable<Word> {
     @SuppressWarnings("Convert2Lambda") // Not familiar with lambdas so far
     static final Comparator<Word> CASE_INSENSITIVE_ORDER = new Comparator<Word>() {
         @Override
@@ -55,11 +58,16 @@ class Word {
     public int hashCode() {
         return Objects.hash(content);
     }
+
+    @Override
+    public int compareTo(Word o) {
+        return content.compareTo(o.content);
+    }
 }
 
 public class E21_WordStatsWithClass {
     static Set<Word> createWordSetFromString(String input) {
-        Set<Word> result = new HashSet<>();
+        Set<Word> result = new TreeSet<>();
 
         for (String wordString : input.split("\\W+")) {
             Word word = new Word(wordString);
