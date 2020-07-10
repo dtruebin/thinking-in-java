@@ -14,11 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class E25_MapWordsToLocations {
-    public static void main(String[] args) {
-        // Using string literal instead of reading from file, for simplicity
-        String[] words = E21_WordStats.input.split("\\W+");
+    private final Map<String, ArrayList<Integer>> wordToLocationsMap = new HashMap<>();
 
-        Map<String, ArrayList<Integer>> wordToLocationsMap = new HashMap<>();
+    E25_MapWordsToLocations(String[] words) {
+        populateMapWithWordLocations(wordToLocationsMap, words);
+    }
+
+    private static void populateMapWithWordLocations(Map<String, ArrayList<Integer>> wordToLocationsMap, String[] words) {
         int wordCount = 0;
         for (String word : words) {
             ArrayList<Integer> wordLocations = wordToLocationsMap.get(word);
@@ -29,7 +31,17 @@ public class E25_MapWordsToLocations {
             }
             wordLocations.add(++wordCount);
         }
+    }
 
-        System.out.println(wordToLocationsMap);
+    public static void main(String[] args) {
+        // Using string literal instead of reading from file, for simplicity
+        String[] words = E21_WordStats.input.split("\\W+");
+
+        E25_MapWordsToLocations mapWordsToLocations = new E25_MapWordsToLocations(words);
+        System.out.println(mapWordsToLocations.getMap());
+    }
+
+    public Map<String, ArrayList<Integer>> getMap() {
+        return wordToLocationsMap;
     }
 }
