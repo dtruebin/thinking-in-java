@@ -47,4 +47,36 @@ class MyLinkedListTest {
         list.clear();
         assertTrue(list.isEmpty());
     }
+
+    @Test
+    void contains() {
+        assertFalse(list.contains(3));
+        list.add(3);
+        assertTrue(list.contains(3));
+    }
+
+    @Test
+    void toArrayOfObject() {
+        Object[] ref = {3, 6, 9};
+        list.add(3);
+        list.add(6);
+        list.add(9);
+        Object[] fromList = list.toArray();
+        assertArrayEquals(ref, fromList);
+    }
+
+    @Test
+    void removeDeletesFirstFoundObject() {
+        list.add(0);
+        list.add(2);
+        list.add(3);
+        list.add(3);
+        list.add(6);
+        assertTrue(list.remove(Integer.valueOf(2)));
+        assertTrue(list.remove(Integer.valueOf(3)));
+        assertTrue(list.contains(0));
+        assertFalse(list.contains(2));
+        assertTrue(list.contains(3));
+        assertTrue(list.contains(6));
+    }
 }

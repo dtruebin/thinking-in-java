@@ -20,8 +20,8 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public boolean contains(Object o) {// TODO
-        return false;
+    public boolean contains(Object o) {
+        return getNode(o) != null;
     }
 
     @Override
@@ -30,8 +30,13 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public Object[] toArray() {// TODO
-        return new Object[0];
+    public Object[] toArray() {
+        Object[] result = new Object[size()];
+        int i = 0;
+        for (Node<E> x = head; x != null; x = x.next) {
+            result[i++] = x.item;
+        }
+        return result;
     }
 
     @Override
@@ -46,7 +51,17 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public boolean remove(Object o) {// TODO
+    public boolean remove(Object o) {
+        Iterator<E> iterator = iterator();
+        //noinspection Java8CollectionRemoveIf (not yet familiar with lambdas)
+        while (iterator.hasNext()) {
+            E e = iterator.next();
+            if (e.equals(o)) {
+                iterator.remove();
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -101,6 +116,18 @@ public class MyLinkedList<E> implements List<E> {
         }
 
         return resultNode;
+    }
+
+    private Node<E> getNode(Object o) {
+        Node<E> resultNode = head;
+
+        for (int i = 0; i < size(); i++, resultNode = resultNode.next) {
+            if (resultNode.item.equals(o)) {
+                return resultNode;
+            }
+        }
+
+        return null;
     }
 
     @Override
