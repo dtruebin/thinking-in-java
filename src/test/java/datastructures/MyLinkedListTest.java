@@ -66,6 +66,16 @@ class MyLinkedListTest {
     }
 
     @Test
+    void toArrayOfSpecifiedClass() {
+        Integer[] ref = {3, 6, 9};
+        list.add(3);
+        list.add(6);
+        list.add(9);
+        Integer[] fromList = list.toArray(new Integer[0]);
+        assertArrayEquals(ref, fromList);
+    }
+
+    @Test
     void removeDeletesFirstFoundObject() {
         list.add(0);
         list.add(2);

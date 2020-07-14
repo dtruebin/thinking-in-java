@@ -39,9 +39,22 @@ public class MyLinkedList<E> implements List<E> {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public <T> T[] toArray(T[] a) {// TODO
-        return null;
+    public <T> T[] toArray(T[] a) {
+        if (a.length < size()) {
+            a = (T[]) java.lang.reflect.Array.newInstance(
+                    a.getClass().getComponentType(), size());
+        }
+        int i = 0;
+        Object[] result = a;
+        for (Node<E> x = head; x != null; x = x.next) {
+            result[i++] = x.item;
+        }
+        if (a.length > size()) {
+            a[size()] = null;
+        }
+        return a;
     }
 
     @Override
@@ -53,7 +66,6 @@ public class MyLinkedList<E> implements List<E> {
     @Override
     public boolean remove(Object o) {
         Iterator<E> iterator = iterator();
-        //noinspection Java8CollectionRemoveIf (not yet familiar with lambdas)
         while (iterator.hasNext()) {
             E e = iterator.next();
             if (e.equals(o)) {
