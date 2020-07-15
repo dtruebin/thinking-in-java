@@ -186,8 +186,14 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public int indexOf(Object o) {// TODO
-        return 0;
+    public int indexOf(Object o) {
+        int i = 0;
+        for (Node<E> current = head; current != null; current = current.next, i++) {
+            if (current.item.equals(o)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override

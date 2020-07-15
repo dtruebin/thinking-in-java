@@ -147,4 +147,13 @@ class MyLinkedListTest {
         assertTrue(list.contains(1));
         assertFalse(it.hasNext());
     }
+
+    @Test
+    void indexOf() {
+        list.add(1);
+        list.add(2);
+        assertEquals(0, list.indexOf(1));
+        assertEquals(1, list.indexOf(2));
+        assertEquals(-1, list.indexOf(3));
+    }
 }
