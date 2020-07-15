@@ -3,13 +3,14 @@ package datastructures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.ListIterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MyLinkedListTest {
 
-    private MyLinkedList<Integer> list;
+    private List<Integer> list;
 
     @BeforeEach
     void setUp() {
@@ -118,10 +119,10 @@ class MyLinkedListTest {
     }
 
     @Test
-    void testLinkBefore() {
+    void testAddAtIndex() {
         list.add(3);
-        list.linkBefore(1, list.getNode(Integer.valueOf(3)));
-        list.linkBefore(2, list.getNode(Integer.valueOf(3)));
+        list.add(list.indexOf(3), 1);
+        list.add(list.indexOf(3), 2);
 
         MyLinkedList<Integer> ref = new MyLinkedList<>();
         ref.add(1);

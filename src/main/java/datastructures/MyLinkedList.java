@@ -138,7 +138,7 @@ public class MyLinkedList<E> implements List<E> {
         return index >= 0 && index <= size();
     }
 
-    Node<E> getNode(int index) {
+    private Node<E> getNode(int index) {
         Node<E> resultNode = head;
 
         if ((index < 0 || index >= size())) {
@@ -152,7 +152,7 @@ public class MyLinkedList<E> implements List<E> {
         return resultNode;
     }
 
-    Node<E> getNode(Object o) {
+    private Node<E> getNode(Object o) {
         Node<E> resultNode = head;
 
         for (int i = 0; i < size(); i++, resultNode = resultNode.next) {
@@ -164,7 +164,7 @@ public class MyLinkedList<E> implements List<E> {
         return null;
     }
 
-    E unlink(Node<E> node) {
+    private E unlink(Node<E> node) {
         E element = node.item;
         Node<E> prev = node.prev;
         Node<E> next = node.next;
@@ -236,7 +236,7 @@ public class MyLinkedList<E> implements List<E> {
         return null;
     }
 
-    void linkFirst(E item) {
+    private void linkFirst(E item) {
         Node<E> newNode = new Node<>(item, null, head);
         if (tail == null) {
             tail = newNode;
@@ -245,7 +245,7 @@ public class MyLinkedList<E> implements List<E> {
         size++;
     }
 
-    void linkLast(E item) {
+    private void linkLast(E item) {
         Node<E> newNode = new Node<>(item, tail, null);
         if (this.isEmpty()) {
             this.head = newNode;
@@ -256,7 +256,7 @@ public class MyLinkedList<E> implements List<E> {
         size++;
     }
 
-    void linkBefore(E item, Node<E> next) {
+    private void linkBefore(E item, Node<E> next) {
         Node<E> newNode = new Node<>(item, next.prev, next);
         if (next == head) {
             head = newNode;
