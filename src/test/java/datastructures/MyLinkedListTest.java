@@ -152,8 +152,10 @@ class MyLinkedListTest {
     void indexOf() {
         list.add(1);
         list.add(2);
+        list.add(null);
         assertEquals(0, list.indexOf(1));
         assertEquals(1, list.indexOf(2));
         assertEquals(-1, list.indexOf(3));
+        assertEquals(2, list.indexOf(null));
     }
 }

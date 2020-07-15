@@ -188,9 +188,17 @@ public class MyLinkedList<E> implements List<E> {
     @Override
     public int indexOf(Object o) {
         int i = 0;
-        for (Node<E> current = head; current != null; current = current.next, i++) {
-            if (current.item.equals(o)) {
-                return i;
+        if (o == null) {
+            for (Node<E> current = head; current != null; current = current.next, i++) {
+                if (current.item == null) {
+                    return i;
+                }
+            }
+        } else {
+            for (Node<E> current = head; current != null; current = current.next, i++) {
+                if (o.equals(current.item)) {
+                    return i;
+                }
             }
         }
         return -1;
