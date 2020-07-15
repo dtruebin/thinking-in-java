@@ -122,8 +122,20 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public void add(int index, E element) { // TODO
+    public void add(int index, E element) {
+        if (!isIndexInRange(index)) {
+            throw new IndexOutOfBoundsException();
+        }
 
+        if (index == size()) {
+            linkFirst(element);
+        } else {
+            linkBefore(element, getNode(index));
+        }
+    }
+
+    private boolean isIndexInRange(int index) {
+        return index >= 0 && index <= size();
     }
 
     Node<E> getNode(int index) {

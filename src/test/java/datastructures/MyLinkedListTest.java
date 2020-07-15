@@ -132,6 +132,16 @@ class MyLinkedListTest {
     }
 
     @Test
+    void addToEmptyListAtPositionZero() {
+        list.add(0, null);
+    }
+
+    @Test
+    void addAtBadPositionThrowsIndexOutOfBoundsException() {
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add(1, null));
+    }
+
+    @Test
     void addFromListIteratorToEmptyList() {
         ListIterator<Integer> it = list.listIterator();
         it.add(1);
