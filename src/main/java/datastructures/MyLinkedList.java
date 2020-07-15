@@ -59,7 +59,7 @@ public class MyLinkedList<E> implements List<E> {
 
     @Override
     public boolean add(E e) {
-        append(e);
+        linkLast(e);
         return true;
     }
 
@@ -116,7 +116,17 @@ public class MyLinkedList<E> implements List<E> {
         return getNode(index).item;
     }
 
-    private Node<E> getNode(int index) {
+    @Override
+    public E set(int index, E element) { // TODO
+        return null;
+    }
+
+    @Override
+    public void add(int index, E element) { // TODO
+
+    }
+
+    Node<E> getNode(int index) {
         Node<E> resultNode = head;
 
         if ((index < 0 || index >= size())) {
@@ -130,7 +140,7 @@ public class MyLinkedList<E> implements List<E> {
         return resultNode;
     }
 
-    private Node<E> getNode(Object o) {
+    Node<E> getNode(Object o) {
         Node<E> resultNode = head;
 
         for (int i = 0; i < size(); i++, resultNode = resultNode.next) {
@@ -142,14 +152,28 @@ public class MyLinkedList<E> implements List<E> {
         return null;
     }
 
-    @Override
-    public E set(int index, E element) {// TODO
-        return null;
-    }
+    E unlink(Node<E> node) {
+        E element = node.item;
+        Node<E> prev = node.prev;
+        Node<E> next = node.next;
 
-    @Override
-    public void add(int index, E element) {// TODO
+        if (prev == null) {
+            head = next;
+        } else {
+            prev.next = next;
+            node.prev = null;
+        }
 
+        if (next == null) {
+            tail = prev;
+        } else {
+            next.prev = prev;
+            node.next = null;
+        }
+
+        node.item = null;
+        size--;
+        return element;
     }
 
     @Override
@@ -158,27 +182,7 @@ public class MyLinkedList<E> implements List<E> {
             throw new IndexOutOfBoundsException();
         }
 
-        Node<E> nodeToBeRemoved = getNode(index);
-        Node<E> nodeNext = nodeToBeRemoved.next;
-        Node<E> nodePrev = nodeToBeRemoved.prev;
-
-        if (size() == 1) {
-            head = tail = null;
-        } else if (nodeToBeRemoved == head) {
-            nodeToBeRemoved.next = null;
-            nodeNext.prev = null;
-            head = nodeNext;
-        } else if (nodeToBeRemoved == tail) {
-            nodeToBeRemoved.prev = null;
-            nodePrev.next = null;
-            tail = nodePrev;
-        } else {
-            nodePrev.next = nodeToBeRemoved.next;
-            nodeNext.prev = nodeToBeRemoved.prev;
-        }
-        size--;
-
-        return nodeToBeRemoved.item;
+        return unlink(getNode(index));
     }
 
     @Override
@@ -192,13 +196,13 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public ListIterator<E> listIterator() {// TODO
-        return null;
+    public ListIterator<E> listIterator() {
+        return new ListIter(0);
     }
 
     @Override
-    public ListIterator<E> listIterator(int index) {// TODO
-        return null;
+    public ListIterator<E> listIterator(int index) {
+        return new ListIter(index);
     }
 
     @Override
@@ -206,7 +210,16 @@ public class MyLinkedList<E> implements List<E> {
         return null;
     }
 
-    private void append(E item) {
+    void linkFirst(E item) {
+        Node<E> newNode = new Node<>(item, null, head);
+        if (tail == null) {
+            tail = newNode;
+        }
+        head = newNode;
+        size++;
+    }
+
+    void linkLast(E item) {
         Node<E> newNode = new Node<>(item, tail, null);
         if (this.isEmpty()) {
             this.head = newNode;
@@ -217,12 +230,14 @@ public class MyLinkedList<E> implements List<E> {
         size++;
     }
 
-    private void prepend(E item) {
-        Node<E> newNode = new Node<>(item, null, head);
-        if (tail == null) {
-            tail = newNode;
+    void linkBefore(E item, Node<E> next) {
+        Node<E> newNode = new Node<>(item, next.prev, next);
+        if (next == head) {
+            head = newNode;
+        } else {
+            next.prev.next = newNode;
         }
-        head = newNode;
+        next.prev = newNode;
         size++;
     }
 
@@ -258,17 +273,105 @@ public class MyLinkedList<E> implements List<E> {
         }
     }
 
+    private class ListIter implements ListIterator<E> {
+        private Node<E> lastReturned;
+        private Node<E> next;
+        private int nextIndex;
+
+        ListIter(int index) {
+            next = (index == size()) ? null : getNode(index);
+            nextIndex = index;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return nextIndex < size();
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+
+            lastReturned = next;
+            next = next.next;
+            nextIndex++;
+            return lastReturned.item;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return nextIndex > 0;
+        }
+
+        @Override
+        public E previous() {
+            if (!hasPrevious()) {
+                throw new NoSuchElementException();
+            }
+
+            next = (next == null) ? tail : next.prev;
+            lastReturned = next;
+            nextIndex--;
+            return lastReturned.item;
+        }
+
+        @Override
+        public int nextIndex() {
+            return nextIndex;
+        }
+
+        @Override
+        public int previousIndex() {
+            return nextIndex - 1;
+        }
+
+        @Override
+        public void remove() {
+            if (lastReturned == null) {
+                throw new IllegalStateException();
+            }
+            Node<E> lastNext = lastReturned.next;
+            unlink(lastReturned);
+            if (next == lastReturned) {
+                next = lastNext;
+            } else {
+                nextIndex--;
+            }
+            lastReturned = null;
+        }
+
+        @Override
+        public void set(E e) {
+            if (lastReturned == null) {
+                throw new IllegalStateException();
+            }
+            lastReturned.item = e;
+        }
+
+        @Override
+        public void add(E e) {
+            if (next == null) {
+                linkLast(e);
+            } else {
+                linkBefore(e, next);
+            }
+            nextIndex++;
+        }
+    }
+
     private class Iter implements Iterator<E> {
 
         /**
          * Index of element that will be returned by call to next.
          */
-        private int cursor = 0;
+        int cursor = 0;
 
         /**
          * Index of element that was returned by the last call to next.
          */
-        private int lastReturned = -1;
+        int lastReturned = -1;
 
         @Override
         public boolean hasNext() {

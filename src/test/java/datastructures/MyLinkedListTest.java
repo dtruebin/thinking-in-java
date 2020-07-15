@@ -3,6 +3,8 @@ package datastructures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ListIterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MyLinkedListTest {
@@ -76,7 +78,7 @@ class MyLinkedListTest {
     }
 
     @Test
-    void removeDeletesFirstFoundObject() {
+    void removeByObjectDeletesFirstFoundObject() {
         list.add(0);
         list.add(2);
         list.add(3);
@@ -88,5 +90,61 @@ class MyLinkedListTest {
         assertFalse(list.contains(2));
         assertTrue(list.contains(3));
         assertTrue(list.contains(6));
+    }
+
+    @Test
+    void removeSingleNodeMakesListEmpty() {
+        list.add(5);
+        assertFalse(list.isEmpty());
+        list.remove(0);
+        assertTrue(list.isEmpty());
+    }
+
+    @Test
+    void removeByListIterator() {
+        list.add(0);
+        list.add(3);
+        list.add(6);
+        ListIterator<Integer> it = list.listIterator(1);
+        it.next();
+        it.remove();
+        assertFalse(list.contains(3));
+        it.next();
+        it.remove();
+        assertFalse(list.contains(6));
+        it.previous();
+        it.remove();
+        assertFalse(list.contains(0));
+    }
+
+    @Test
+    void testLinkBefore() {
+        list.add(3);
+        list.linkBefore(1, list.getNode(Integer.valueOf(3)));
+        list.linkBefore(2, list.getNode(Integer.valueOf(3)));
+
+        MyLinkedList<Integer> ref = new MyLinkedList<>();
+        ref.add(1);
+        ref.add(2);
+        ref.add(3);
+
+        assertArrayEquals(list.toArray(new Integer[0]), ref.toArray(new Integer[0]));
+    }
+
+    @Test
+    void addFromListIteratorToEmptyList() {
+        ListIterator<Integer> it = list.listIterator();
+        it.add(1);
+        assertTrue(list.contains(1));
+    }
+
+    @Test
+    void addFromListIteratorToListEndDoesNotMoveExplicitCursor() {
+        list.add(0);
+        ListIterator<Integer> it = list.listIterator();
+        it.next();
+        it.add(1);
+        assertTrue(list.contains(1));
+        assertFalse(it.hasNext());
     }
 }
