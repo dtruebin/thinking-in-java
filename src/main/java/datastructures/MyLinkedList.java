@@ -99,8 +99,15 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public boolean addAll(int index, Collection<? extends E> c) {// TODO
-        return false;
+    public boolean addAll(int index, Collection<? extends E> c) {
+        checkPositionIndex(index);
+        if (c.isEmpty()) {
+            return false;
+        }
+        for (E e : c) {
+            add(index++, e);
+        }
+        return true;
     }
 
     @Override
@@ -143,7 +150,7 @@ public class MyLinkedList<E> implements List<E> {
         checkPositionIndex(index);
 
         if (index == size()) {
-            linkFirst(element);
+            linkLast(element);
         } else {
             linkBefore(element, getNode(index));
         }
@@ -317,7 +324,7 @@ public class MyLinkedList<E> implements List<E> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof List)) return false;
 
         Iterator<E> itThis = iterator();
         Iterator<?> itThat = ((List<?>) o).iterator();

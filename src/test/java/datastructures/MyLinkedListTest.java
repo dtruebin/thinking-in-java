@@ -132,15 +132,13 @@ class MyLinkedListTest {
     }
 
     @Test
-    void testAddAtIndex() {
+    void addAtIndex() {
         list.add(3);
         list.add(list.indexOf(3), 1);
         list.add(list.indexOf(3), 2);
+        list.add(list.size(), 4);
 
-        MyLinkedList<Integer> ref = new MyLinkedList<>();
-        ref.add(1);
-        ref.add(2);
-        ref.add(3);
+        List<Integer> ref = new LinkedList<>(Arrays.asList(1, 2, 3, 4));
 
         assertEquals(list, ref);
     }
@@ -212,6 +210,16 @@ class MyLinkedListTest {
         }
 
         assertEquals(list, listFilledWithMultipleAdd);
+    }
+
+    @Test
+    void addAllAtIndex() {
+        Set<Integer> c = new LinkedHashSet<>(Arrays.asList(1, null, 2));
+        list.add(3);
+        list.add(4);
+        list.addAll(0, c);
+        list.addAll(list.size(), c);
+        assertEquals(list, Arrays.asList(1, null, 2, 3, 4, 1, null, 2));
     }
 
     @SuppressWarnings("SimplifiableJUnitAssertion") // for the  sake of uniformity
