@@ -118,8 +118,17 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public boolean retainAll(Collection<?> c) {// TODO
-        return false;
+    public boolean retainAll(Collection<?> c) {
+        Objects.requireNonNull(c);
+        boolean hasChanged = false;
+        for (Node<E> next, current = head; current != null; current = next) {
+            next = current.next;
+            if (!c.contains(current.item)) {
+                unlink(current);
+                hasChanged = true;
+            }
+        }
+        return hasChanged;
     }
 
     @Override

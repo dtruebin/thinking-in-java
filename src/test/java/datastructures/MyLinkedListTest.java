@@ -132,6 +132,21 @@ class MyLinkedListTest {
     }
 
     @Test
+    void retainAll() {
+        list.addAll(Arrays.asList(1, 2, 2, null, 3, 4, null));
+        assertTrue(list.retainAll(Arrays.asList(3, null, 1)));
+        assertEquals(list, Arrays.asList(1, null, 3, null));
+        assertTrue(list.retainAll(Arrays.asList(3, null)));
+        assertEquals(list, Arrays.asList(null, 3, null));
+    }
+
+    @SuppressWarnings("ConstantConditions") // ignore null check
+    @Test
+    void retainAllForNullCollectionThrowsException() {
+        assertThrows(NullPointerException.class, () -> list.retainAll(null));
+    }
+
+    @Test
     void removeByListIterator() {
         list.add(0);
         list.add(3);
