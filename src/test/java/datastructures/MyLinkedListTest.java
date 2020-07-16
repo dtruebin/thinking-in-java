@@ -162,14 +162,22 @@ class MyLinkedListTest {
     }
 
     @Test
-    void indexOf() {
+    void getFirstAndLastIndexByElement() {
         list.add(1);
-        list.add(2);
         list.add(null);
+        list.add(null);
+        list.add(2);
+        list.add(2);
+
         assertEquals(0, list.indexOf(1));
-        assertEquals(1, list.indexOf(2));
-        assertEquals(-1, list.indexOf(3));
-        assertEquals(2, list.indexOf(null));
+        assertEquals(3, list.indexOf(2));
+        assertEquals(1, list.indexOf(null));
+        assertEquals(-1, list.indexOf(100));
+
+        assertEquals(0, list.lastIndexOf(1));
+        assertEquals(4, list.lastIndexOf(2));
+        assertEquals(2, list.lastIndexOf(null));
+        assertEquals(-1, list.lastIndexOf(100));
     }
 
     @Test

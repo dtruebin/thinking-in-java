@@ -233,8 +233,14 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public int lastIndexOf(Object o) {// TODO
-        return 0;
+    public int lastIndexOf(Object o) {
+        int i = size() - 1;
+        for (Node<E> node = tail; node != null; node = node.prev, i--) {
+            if (Objects.equals(node.item, o)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
