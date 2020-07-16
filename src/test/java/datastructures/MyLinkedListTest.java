@@ -111,11 +111,24 @@ class MyLinkedListTest {
     }
 
     @Test
-    void removeSingleNodeMakesListEmpty() {
+    void removeSingleNodeByIndexMakesListEmpty() {
         list.add(5);
         assertFalse(list.isEmpty());
         list.remove(0);
         assertTrue(list.isEmpty());
+    }
+
+    @Test
+    void removeAll() {
+        list.addAll(Arrays.asList(1, 2, 2, null, 3, 4, null));
+        assertTrue(list.removeAll(Arrays.asList(1, 2, 4, null)));
+        assertEquals(list, Collections.singletonList(3));
+    }
+
+    @SuppressWarnings("ConstantConditions") // ignore null check
+    @Test
+    void removeAllForNullCollectionThrowsException() {
+        assertThrows(NullPointerException.class, () -> list.removeAll(null));
     }
 
     @Test

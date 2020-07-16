@@ -107,8 +107,14 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public boolean removeAll(Collection<?> c) {// TODO
-        return false;
+    public boolean removeAll(Collection<?> c) {
+        boolean hasChanged = false;
+        for (Object o : c) {
+            while (contains(o)) {
+                hasChanged = remove(o);
+            }
+        }
+        return hasChanged;
     }
 
     @Override
