@@ -78,8 +78,13 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public boolean containsAll(Collection<?> c) {// TODO
-        return false;
+    public boolean containsAll(Collection<?> c) {
+        for (Object o : c) {
+            if (!contains(o)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -172,7 +177,7 @@ public class MyLinkedList<E> implements List<E> {
         Node<E> resultNode = head;
 
         for (int i = 0; i < size(); i++, resultNode = resultNode.next) {
-            if (resultNode.item.equals(o)) {
+            if (Objects.equals(resultNode.item, o)) {
                 return resultNode;
             }
         }

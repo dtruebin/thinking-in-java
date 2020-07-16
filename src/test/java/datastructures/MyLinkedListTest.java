@@ -3,10 +3,7 @@ package datastructures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -56,8 +53,22 @@ class MyLinkedListTest {
     @Test
     void contains() {
         assertFalse(list.contains(3));
+        assertFalse(list.contains(null));
         list.add(3);
+        list.add(null);
         assertTrue(list.contains(3));
+        assertTrue(list.contains(null));
+    }
+
+    @Test
+    void containsAll() {
+        List<Integer> c = new LinkedList<>(Arrays.asList(-100, 2, null, 3));
+        list.add(2);
+        list.add(3);
+        list.add(null);
+        list.add(-100);
+
+        assertTrue(list.containsAll(c));
     }
 
     @Test
