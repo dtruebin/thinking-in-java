@@ -123,15 +123,19 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public E set(int index, E element) { // TODO
-        return null;
+    public E set(int index, E element) {
+        checkPositionIndex(index);
+
+        Node<E> node = getNode(index);
+        E elementPrev = node.item;
+        node.item = element;
+
+        return elementPrev;
     }
 
     @Override
     public void add(int index, E element) {
-        if (!isIndexInRange(index)) {
-            throw new IndexOutOfBoundsException();
-        }
+        checkPositionIndex(index);
 
         if (index == size()) {
             linkFirst(element);
@@ -140,8 +144,14 @@ public class MyLinkedList<E> implements List<E> {
         }
     }
 
-    private boolean isIndexInRange(int index) {
+    private boolean isPositionIndex(int index) {
         return index >= 0 && index <= size();
+    }
+
+    private void checkPositionIndex(int index) {
+        if (!isPositionIndex(index)) {
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     private Node<E> getNode(int index) {

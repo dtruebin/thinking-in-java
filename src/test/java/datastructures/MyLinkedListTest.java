@@ -194,4 +194,17 @@ class MyLinkedListTest {
 
         assertEquals(list, listFilledWithMultipleAdd);
     }
+
+    @SuppressWarnings("SimplifiableJUnitAssertion") // for the  sake of uniformity
+    @Test
+    void setReplacesElementAndReturnsPrevious() {
+        list.add(1);
+        list.add(2);
+        list.add(3);
+
+        assertEquals(2, list.set(1, null));
+        assertEquals(null, list.set(1, 10));
+        assertEquals(10, list.get(1));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set(100, null));
+    }
 }
