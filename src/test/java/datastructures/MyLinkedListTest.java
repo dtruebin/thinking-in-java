@@ -97,12 +97,16 @@ class MyLinkedListTest {
         list.add(2);
         list.add(3);
         list.add(3);
+        list.add(null);
+        list.add(null);
         list.add(6);
         assertTrue(list.remove(Integer.valueOf(2)));
         assertTrue(list.remove(Integer.valueOf(3)));
+        assertTrue(list.remove(null));
         assertTrue(list.contains(0));
         assertFalse(list.contains(2));
         assertTrue(list.contains(3));
+        assertTrue(list.contains(null));
         assertTrue(list.contains(6));
     }
 

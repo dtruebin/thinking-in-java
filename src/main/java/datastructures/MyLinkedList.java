@@ -65,15 +65,11 @@ public class MyLinkedList<E> implements List<E> {
 
     @Override
     public boolean remove(Object o) {
-        Iterator<E> iterator = iterator();
-        while (iterator.hasNext()) {
-            E e = iterator.next();
-            if (e.equals(o)) {
-                iterator.remove();
-                return true;
-            }
+        Node<E> node = getNode(o);
+        if (node != null) {
+            unlink(node);
+            return true;
         }
-
         return false;
     }
 
