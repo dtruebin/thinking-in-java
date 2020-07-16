@@ -3,8 +3,10 @@ package datastructures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -129,7 +131,7 @@ class MyLinkedListTest {
         ref.add(2);
         ref.add(3);
 
-        assertArrayEquals(list.toArray(new Integer[0]), ref.toArray(new Integer[0]));
+        assertEquals(list, ref);
     }
 
     @Test
@@ -168,5 +170,28 @@ class MyLinkedListTest {
         assertEquals(1, list.indexOf(2));
         assertEquals(-1, list.indexOf(3));
         assertEquals(2, list.indexOf(null));
+    }
+
+    @Test
+    void addAllForEmptyCollectionReturnsFalse() {
+        Set<Integer> c = new HashSet<>();
+        assertFalse(list.addAll(c));
+    }
+
+    @SuppressWarnings("UseBulkOperation")
+    @Test
+    void addAllResultMatchesMultipleAdd() {
+        Set<Integer> c = new HashSet<>();
+        for (int i = 0; i < 10; i++) {
+            c.add(i);
+        }
+
+        list.addAll(c);
+        List<Integer> listFilledWithMultipleAdd = new MyLinkedList<>();
+        for (Integer i : c) {
+            listFilledWithMultipleAdd.add(i);
+        }
+
+        assertEquals(list, listFilledWithMultipleAdd);
     }
 }

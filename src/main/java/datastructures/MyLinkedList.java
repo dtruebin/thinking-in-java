@@ -83,8 +83,14 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends E> c) {// TODO
-        return false;
+    public boolean addAll(Collection<? extends E> c) {
+        if (c.isEmpty()) {
+            return false;
+        }
+        for (E e : c) {
+            add(e);
+        }
+        return true;
     }
 
     @Override
@@ -285,6 +291,34 @@ public class MyLinkedList<E> implements List<E> {
             }
             sb.append(", ");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Iterator<E> itThis = iterator();
+        Iterator<?> itThat = ((List<?>) o).iterator();
+
+        while (itThis.hasNext() && itThat.hasNext()) {
+            E elThis = itThis.next();
+            Object elThat = itThat.next();
+
+            if (!(Objects.equals(elThis, elThat))) {
+                return false;
+            }
+        }
+
+        return !(itThis.hasNext() || itThat.hasNext());
+    }
+
+    @Override
+    public int hashCode() {
+        int hashCode = 1;
+        for (E e : this)
+            hashCode = 31 * hashCode + (e == null ? 0 : e.hashCode());
+        return hashCode;
     }
 
     private static class Node<E> {
