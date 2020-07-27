@@ -12,8 +12,7 @@ public class E02_Shapes {
             shapes[i] = gen.next();
         }
 
-        for (Shape shape :
-                shapes) {
+        for (Shape shape : shapes) {
             shape.draw();
             shape.erase();
             shape.msg();
