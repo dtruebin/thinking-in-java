@@ -19,7 +19,7 @@ class BoringSituationException extends Exception {
     }
 
     void printMessage() {
-        System.out.println("message = " + message);
+        System.out.println("Exception message = " + message);
     }
 }
 
