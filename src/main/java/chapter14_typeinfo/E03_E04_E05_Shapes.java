@@ -7,6 +7,10 @@ happens.
 Exercise 4:
 Modify the previous exercise so that it uses instanceof to check the type before
 performing the downcast.
+
+Exercise 5:
+Implement a rotate(Shape) method in Shapes.java, such that it checks to see if
+it is rotating a Circle (and, if so, doesn't perform the operation).
  */
 
 package main.java.chapter14_typeinfo;
@@ -47,13 +51,23 @@ class Triangle extends Shape {
 }
 
 @SuppressWarnings("ConstantConditions")
-public class E03_E04_Shapes {
+public class E03_E04_E05_Shapes {
+    static Shape rotate(Shape shape) {
+        if (shape instanceof Circle) {
+            System.out.println("Skipping rotation of the " + shape);
+        } else {
+            System.out.println("Rotating the " + shape);
+        }
+        return shape;
+    }
+
     public static void main(String[] args) {
         List<Shape> shapeList = Arrays.asList(
                 new Circle(), new Square(), new Triangle()
         );
         for (Shape shape : shapeList) {
             shape.draw();
+            rotate(shape);
         }
         Shape s = new Rhomboid();
         Rhomboid r = (Rhomboid) s;
