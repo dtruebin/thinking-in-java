@@ -1,7 +1,12 @@
 /*
+Exercise 3:
 Add Rhomboid to Shapes.java. Create a Rhomboid, upcast it to a Shape, then
 downcast it back to a Rhomboid. Try downcasting to a Circle and see what
 happens.
+
+Exercise 4:
+Modify the previous exercise so that it uses instanceof to check the type before
+performing the downcast.
  */
 
 package main.java.chapter14_typeinfo;
@@ -42,7 +47,7 @@ class Triangle extends Shape {
 }
 
 @SuppressWarnings("ConstantConditions")
-public class E03_Shapes {
+public class E03_E04_Shapes {
     public static void main(String[] args) {
         List<Shape> shapeList = Arrays.asList(
                 new Circle(), new Square(), new Triangle()
@@ -53,11 +58,9 @@ public class E03_Shapes {
         Shape s = new Rhomboid();
         Rhomboid r = (Rhomboid) s;
         r.draw();
-        Circle c = (Circle) s;
-        try {
+        if (s instanceof Circle) {
+            Circle c = (Circle) s;
             c.draw();
-        } catch (ClassCastException cse) {
-            cse.printStackTrace();
         }
     }
 }
