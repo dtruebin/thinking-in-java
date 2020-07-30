@@ -23,10 +23,18 @@ abstract class Shape {
         System.out.println(this + ".draw()");
     }
 
+    void rotate(int deg) {
+        System.out.println("Rotating " + this + " by " + deg + "°");
+    }
+
     abstract public String toString();
 }
 
 class Circle extends Shape {
+    void rotate(int deg) {
+        throw new UnsupportedOperationException("Can't rotate a circle");
+    }
+
     public String toString() {
         return "Circle";
     }
@@ -52,22 +60,15 @@ class Triangle extends Shape {
 
 @SuppressWarnings("ConstantConditions")
 public class E03_E04_E05_Shapes {
-    static Shape rotate(Shape shape) {
-        if (shape instanceof Circle) {
-            System.out.println("Skipping rotation of the " + shape);
-        } else {
-            System.out.println("Rotating the " + shape);
-        }
-        return shape;
-    }
-
     public static void main(String[] args) {
         List<Shape> shapeList = Arrays.asList(
                 new Circle(), new Square(), new Triangle()
         );
         for (Shape shape : shapeList) {
             shape.draw();
-            rotate(shape);
+            if (!(shape instanceof Circle)) {
+                shape.rotate(30);
+            }
         }
         Shape s = new Rhomboid();
         Rhomboid r = (Rhomboid) s;
