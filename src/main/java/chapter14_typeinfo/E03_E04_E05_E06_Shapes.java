@@ -34,7 +34,7 @@ abstract class Shape {
 
     static void highlightAll(Class<?> c) {
         for (Shape shape : shapes) {
-            if (shape.getClass().equals(c)) {
+            if (c.isInstance(shape)) {
                 shape.highlight();
             } else {
                 shape.unhighlight();
@@ -72,7 +72,10 @@ class Circle extends Shape {
 class Rhomboid extends Shape {
 }
 
-class Square extends Shape {
+class Rectangle extends Shape {
+}
+
+class Square extends Rectangle {
 }
 
 class Triangle extends Shape {
@@ -84,7 +87,7 @@ public class E03_E04_E05_E06_Shapes {
         List<Shape> shapeList = Arrays.asList(
                 new Circle(), new Square(), new Triangle()
         );
-        Shape.highlightAll(Square.class);
+        Shape.highlightAll(Rectangle.class);
         for (Shape shape : shapeList) {
             shape.draw();
             if (!(shape instanceof Circle)) {
