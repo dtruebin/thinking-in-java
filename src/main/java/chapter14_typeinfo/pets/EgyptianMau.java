@@ -8,4 +8,11 @@ public class EgyptianMau extends Cat {
     public EgyptianMau() {
         super();
     }
+
+    public static class Factory implements main.java.chapter14_typeinfo.factory.Factory<EgyptianMau> {
+        @Override
+        public EgyptianMau create() {
+            return new EgyptianMau();
+        }
+    }
 }

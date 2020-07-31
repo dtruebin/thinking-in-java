@@ -8,4 +8,11 @@ public class Rodent extends Pet {
     public Rodent() {
         super();
     }
+
+    public static class Factory implements main.java.chapter14_typeinfo.factory.Factory<Rodent> {
+        @Override
+        public Rodent create() {
+            return new Rodent();
+        }
+    }
 }

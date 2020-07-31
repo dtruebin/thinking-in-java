@@ -8,4 +8,11 @@ public class Manx extends Cat {
     public Manx() {
         super();
     }
+
+    public static class Factory implements main.java.chapter14_typeinfo.factory.Factory<Manx> {
+        @Override
+        public Manx create() {
+            return new Manx();
+        }
+    }
 }

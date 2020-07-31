@@ -8,4 +8,11 @@ public class Cymric extends Manx {
     public Cymric() {
         super();
     }
+
+    public static class Factory implements main.java.chapter14_typeinfo.factory.Factory<Cymric> {
+        @Override
+        public Cymric create() {
+            return new Cymric();
+        }
+    }
 }

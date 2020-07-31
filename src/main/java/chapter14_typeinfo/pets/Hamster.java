@@ -8,4 +8,11 @@ public class Hamster extends Rodent {
     public Hamster() {
         super();
     }
+
+    public static class Factory implements main.java.chapter14_typeinfo.factory.Factory<Hamster> {
+        @Override
+        public Hamster create() {
+            return new Hamster();
+        }
+    }
 }

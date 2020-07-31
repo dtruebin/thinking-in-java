@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Pets {
     public static final PetCreator creator =
-            new LiteralPetCreator();
+            new RegisteredFactoriesPetCreator();
 
     public static Pet randomPet() {
         return creator.randomPet();

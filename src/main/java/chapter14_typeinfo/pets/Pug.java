@@ -8,4 +8,11 @@ public class Pug extends Dog {
     public Pug() {
         super();
     }
+
+    public static class Factory implements main.java.chapter14_typeinfo.factory.Factory<Pug> {
+        @Override
+        public Pug create() {
+            return new Pug();
+        }
+    }
 }

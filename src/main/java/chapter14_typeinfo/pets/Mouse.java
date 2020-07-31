@@ -8,4 +8,11 @@ public class Mouse extends Rodent {
     public Mouse() {
         super();
     }
+
+    public static class Factory implements main.java.chapter14_typeinfo.factory.Factory<Mouse> {
+        @Override
+        public Mouse create() {
+            return new Mouse();
+        }
+    }
 }

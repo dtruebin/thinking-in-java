@@ -8,4 +8,11 @@ public class Rat extends Rodent {
     public Rat() {
         super();
     }
+
+    public static class Factory implements main.java.chapter14_typeinfo.factory.Factory<Rat> {
+        @Override
+        public Rat create() {
+            return new Rat();
+        }
+    }
 }
