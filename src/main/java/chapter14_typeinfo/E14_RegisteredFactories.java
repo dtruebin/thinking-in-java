@@ -6,24 +6,16 @@ List, and newInstance( ) is used to create each object.
 
 package main.java.chapter14_typeinfo;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 class Part {
     private static final Random rand = new Random(47);
     // Registering Class Factories in the base class.
-    static List<Class<? extends Part>> partClasses = new ArrayList<>();
-
-    static {
-        partClasses.add(FuelFilter.class);
-        partClasses.add(AirFilter.class);
-        partClasses.add(CabinAirFilter.class);
-        partClasses.add(OilFilter.class);
-        partClasses.add(FanBelt.class);
-        partClasses.add(PowerSteeringBelt.class);
-        partClasses.add(GeneratorBelt.class);
-    }
+    static List<Class<? extends Part>> partClasses =
+            Arrays.asList(FuelFilter.class, AirFilter.class, CabinAirFilter.class, OilFilter.class, FanBelt.class,
+                    PowerSteeringBelt.class, GeneratorBelt.class);
 
     public static Part createRandom() {
         Part part;
