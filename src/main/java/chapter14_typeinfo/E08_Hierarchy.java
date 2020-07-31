@@ -16,16 +16,15 @@ class Bottom extends Middle {
 
 
 public class E08_Hierarchy {
-    static void printClassHierarchy(Object o) {
-        Class<?> c = o.getClass();
+    static void printClassHierarchy(Class<?> c) {
         System.out.println(c.getName());
-        if (c.getSuperclass() != Object.class) {
-            try {
-                printClassHierarchy(c.getSuperclass().newInstance());
-            } catch (InstantiationException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
+        if (c.getSuperclass() != null) {
+            printClassHierarchy(c.getSuperclass());
         }
+    }
+
+    static void printClassHierarchy(Object o) {
+        printClassHierarchy(o.getClass());
     }
 
     public static void main(String[] args) {
