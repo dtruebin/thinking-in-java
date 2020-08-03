@@ -7,7 +7,7 @@ public class MyArrayList<E> implements List<E> {
     private Object[] data;
     private int size = 0; // not to be confused with capacity
 
-    MyArrayList() {
+    public MyArrayList() {
         data = new Object[DEFAULT_CAPACITY];
     }
 
