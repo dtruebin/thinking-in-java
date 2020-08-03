@@ -19,7 +19,14 @@ public class ListPerformanceTest {
     // TODO make tic-do-toc part reusable. Method taking another method as
     //  parameter? Lambdas?
     // TODO figure out a better way to store/present the measured results
-    static void measure(List<Long> list, long n) {
+    static void measure(List<Long> refList, long n) {
+        List<Long> list;
+        try {
+            //noinspection unchecked
+            list = refList.getClass().newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Measuring performance of " + list.getClass().getName() + " with " + n + " elements");
 
         s.tic();
