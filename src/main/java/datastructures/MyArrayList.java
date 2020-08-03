@@ -36,14 +36,9 @@ public class MyArrayList<E> implements List<E> {
         return false;
     }
 
-    /**
-     * Returns an iterator over the elements in this list in proper sequence.
-     *
-     * @return an iterator over the elements in this list in proper sequence
-     */
     @Override
-    public Iterator<E> iterator() { // TODO implement method
-        return null;
+    public Iterator<E> iterator() {
+        return new Iter();
     }
 
     @Override
@@ -358,5 +353,26 @@ public class MyArrayList<E> implements List<E> {
     @Override
     public List<E> subList(int fromIndex, int toIndex) { // TODO implement method
         return null;
+    }
+
+    private class Iter implements Iterator<E> {
+
+        int cursor = 0;
+
+        @Override
+        public boolean hasNext() {
+            return cursor != size;
+        }
+
+        @Override
+        public E next() {
+            try {
+                return get(cursor++);
+            } catch (IndexOutOfBoundsException e) {
+                NoSuchElementException noSuchElementException = new NoSuchElementException();
+                noSuchElementException.initCause(e);
+                throw noSuchElementException;
+            }
+        }
     }
 }

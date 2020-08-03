@@ -4,7 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +28,17 @@ class MyArrayListTest {
         assertTrue(list.contains(5));
         assertFalse(list.contains(-10));
         assertFalse(list.contains(100));
+    }
+
+    @Test
+    void iteratorStopsAtLastAndThrowsExceptionAfterwards() {
+        Integer element = null;
+        Iterator<Integer> it = list.iterator();
+        while (it.hasNext()) {
+            element = it.next();
+        }
+        assertEquals(list.get(list.size() - 1), element);
+        assertThrows(NoSuchElementException.class, it::next);
     }
 
     @Test
