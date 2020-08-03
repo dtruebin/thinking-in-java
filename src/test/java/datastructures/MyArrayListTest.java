@@ -83,15 +83,32 @@ class MyArrayListTest {
     }
 
     @Test
-    void remove() {
-        Integer prevHead = list.get(1);
+    void removeObject() {
+        assertTrue(list.remove((Integer) 3));
+        assertFalse(list.remove((Integer) 3));
+        assertTrue(list.remove(null));
+        assertTrue(list.remove((Integer) 5));
+
+        Integer[] arrExpected = {1, 2, 5};
+        assertArrayEquals(arrExpected, list.toArray(new Integer[0]));
+    }
+
+    @Test
+    void removeAtIndexFirst() {
+        int initialSize = list.size();
+        Integer headToBe = list.get(1);
         assertEquals(list.get(0), list.remove(0));
-        assertEquals(prevHead, list.get(0));
+        assertEquals(headToBe, list.get(0));
+        assertEquals(initialSize - 1, list.size());
+    }
 
-        Integer prevPenultimate = list.get(list.size() - 2);
-        assertEquals(list.get(list.size() - 1), list.remove(list.size() - 1));
-        assertEquals(prevPenultimate, list.get(list.size() - 1));
-
+    @Test
+    void removeAtIndexLast() {
+        int initialSize = list.size();
+        int removeIndex = initialSize - 1;
+        Integer tailToBe = list.get(initialSize - 2);
+        assertEquals(list.get(removeIndex), list.remove(removeIndex));
+        assertEquals(tailToBe, list.get(list.size() - 1));
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(list.size()));
     }
 
