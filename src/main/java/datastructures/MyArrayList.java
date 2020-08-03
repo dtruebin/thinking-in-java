@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MyArrayList<E> implements List<E> {
     private static final int DEFAULT_CAPACITY = 10;
-    private final Object[] data;
+    private Object[] data;
     private int size = 0; // not to be confused with capacity
 
     MyArrayList() {
@@ -62,30 +62,27 @@ public class MyArrayList<E> implements List<E> {
     }
 
     /**
-     * Appends the specified element to the end of this list (optional
-     * operation).
+     * Makes the underlying array twice as big, when desired capacity is less
+     * than the current one.
      *
-     * <p>Lists that support this operation may place limitations on what
-     * elements may be added to this list.  In particular, some
-     * lists will refuse to add null elements, and others will impose
-     * restrictions on the type of elements that may be added.  List
-     * classes should clearly specify in their documentation any restrictions
-     * on what elements may be added.
-     *
-     * @param e element to be appended to this list
-     * @return <tt>true</tt> (as specified by {@link Collection#add})
-     * @throws UnsupportedOperationException if the <tt>add</tt> operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       list does not permit null elements
-     * @throws IllegalArgumentException      if some property of this element
-     *                                       prevents it from being added to this list
+     * @param desiredCapacity minimum amount of items that the underlying array should be able to hold
+     * @return <tt>true</tt> if array length changed as a result of the call
      */
+    private boolean ensureCapacity(int desiredCapacity) {
+        int currentCapacity = data.length;
+        if (currentCapacity < desiredCapacity) {
+            data = Arrays.copyOf(data, currentCapacity * 2);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
-    public boolean add(E e) { // TODO implement method
-        return false;
+    public boolean add(E e) {
+        ensureCapacity(size + 1);
+        data[size++] = e;
+        return true;
     }
 
     @Override

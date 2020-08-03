@@ -3,16 +3,14 @@ package datastructures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MyArrayListTest {
 
     private static final Integer[] arr = {1, 2, 3, null, 5, 5};
+    private static final Random rand = new Random();
     private List<Integer> list;
 
     @BeforeEach
@@ -53,6 +51,15 @@ class MyArrayListTest {
 
         //noinspection ConstantConditions
         assertThrows(NullPointerException.class, () -> list.toArray(null));
+    }
+
+    @Test
+    void add() {
+        int lastSize = list.size();
+        int value = rand.nextInt();
+        assertTrue(list.add(value));
+        assertEquals(value, list.get(lastSize));
+        assertEquals(lastSize + 1, list.size());
     }
 
     @Test
