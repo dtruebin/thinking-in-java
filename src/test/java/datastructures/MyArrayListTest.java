@@ -101,6 +101,27 @@ class MyArrayListTest {
     }
 
     @Test
+    void addAtIndex() {
+        int value = rand.nextInt();
+        int sizeAtStart = list.size();
+        int additions = 0;
+
+        // Add to end, [somewhere in the] middle, and beginning
+        int[] indexes = {sizeAtStart, sizeAtStart / 2, 0};
+        for (int index : indexes) {
+            list.add(index, value);
+            additions++;
+        }
+
+        assertEquals(value, list.get(0));
+        assertEquals(value, list.get(sizeAtStart / 2));
+        assertEquals(value, list.get(sizeAtStart));
+        assertEquals(sizeAtStart + additions, list.size());
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add(-1, value));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add(list.size() + 1, value));
+    }
+
+    @Test
     void removeAtIndexFirst() {
         int initialSize = list.size();
         Integer headToBe = list.get(1);
