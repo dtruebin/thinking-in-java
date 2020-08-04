@@ -7,20 +7,29 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import static util.ListUtils.populate;
+
 public class ListPerformanceTest {
     static Stopwatch s = new Stopwatch();
-
-    static void populate(List<Long> list, long n) {
-        for (long i = 0; i < n; i++) {
-            list.add(i);
-        }
-    }
 
     // TODO make tic-do-toc part reusable. Method taking another method as
     //  parameter? Lambdas?
     // TODO figure out a better way to store/present the measured results
+    // TODO print heading only once
+    // TODO check if it's beneficial to switch from StringBuilder to StringJoiner
+
+    /**
+     * Measures total duration of {@code n} executions for each of the various
+     * List operations, and prints the result in a CSV-like format.
+     *
+     * @param refList list to use as reference: its class is used to build a new
+     *                "guinea pig" list
+     * @param n       number of operations to execute
+     */
     static void measure(List<Long> refList, long n) {
         List<Long> list;
+        StringBuilder sbResult = new StringBuilder();
+        StringBuilder sbHeading = new StringBuilder();
         try {
             //noinspection unchecked
             list = refList.getClass().newInstance();
@@ -29,47 +38,62 @@ public class ListPerformanceTest {
         }
         System.out.println("Measuring performance of " + list.getClass().getName() + " with " + n + " elements");
 
+        sbHeading.append("Class,N,");
+        sbResult.append(list.getClass().getName())
+                .append(",")
+                .append(n)
+                .append(",");
+
+        sbHeading.append("Append,");
         s.tic();
         for (long i = 0; i < n; i++) {
             list.add(i);
         }
-        s.tocAndPrint("Append");
+        sbResult.append(s.toc()).append(",");
 
+        sbHeading.append("Get by index,");
         s.tic();
         for (long i = 0; i < n; i++) {
             //noinspection ResultOfMethodCallIgnored - no need to store it
             list.get((int) i);
         }
-        s.tocAndPrint("Get by index");
+        sbResult.append(s.toc()).append(",");
 
+        sbHeading.append("Remove by index from beginning,");
         s.tic();
         for (int i = 0; i < n; i++) {
             list.remove(0);
         }
-        s.tocAndPrint("Remove by index from beginning");
+        sbResult.append(s.toc()).append(",");
 
+        sbHeading.append("Remove by index from end,");
         populate(list, n);
         s.tic();
         //noinspection ListRemoveInLoop - subList not implemented in My*List
         for (int i = (int) (n - 1); i >= 0; i--) {
             list.remove(i);
         }
-        s.tocAndPrint("Remove by index from end");
+        sbResult.append(s.toc()).append(",");
 
+        sbHeading.append("Insert in the middle,");
         list.clear();
         s.tic();
         for (long i = 0; i < n; i++) {
             list.add(list.size() / 2, i);
         }
-        s.tocAndPrint("Insert in the middle");
+        sbResult.append(s.toc()).append(",");
 
+        sbHeading.append("Remove by object,");
         s.tic();
         for (long i = 0; i < n; i++) {
             list.remove(i);
         }
-        s.tocAndPrint("Remove by object");
+        sbResult.append(s.toc()).append(",");
 
-        System.out.println("--------");
+        sbHeading.deleteCharAt(sbHeading.length() - 1);
+        sbResult.deleteCharAt(sbResult.length() - 1);
+        System.out.println(sbHeading);
+        System.out.println(sbResult);
     }
 
     public static void main(String[] args) {
@@ -80,8 +104,21 @@ public class ListPerformanceTest {
                 new MyLinkedList<>(),
                 new LinkedList<>()
         };
-        for (int n = 100; n <= 10_000; n *= 10) {
-            for (List<Long> list : lists) {
+
+        int total = 100_000;
+        if (args.length > 0) {
+            try {
+                total = Integer.parseInt(args[0]);
+            } catch (NumberFormatException e) {
+                System.err.format(
+                        "\"%s\" can't be parsed to int. Using default total: %d\n",
+                        args[0], total
+                );
+            }
+        }
+
+        for (List<Long> list : lists) {
+            for (int n = 10000; n <= total; n += 10000) {
                 measure(list, n);
             }
         }
