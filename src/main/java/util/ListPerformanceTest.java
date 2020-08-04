@@ -6,6 +6,7 @@ import datastructures.MyLinkedList;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.StringJoiner;
 
 import static util.ListUtils.populate;
 
@@ -16,7 +17,6 @@ public class ListPerformanceTest {
     //  parameter? Lambdas?
     // TODO figure out a better way to store/present the measured results
     // TODO print heading only once
-    // TODO check if it's beneficial to switch from StringBuilder to StringJoiner
 
     /**
      * Measures total duration of {@code n} executions for each of the various
@@ -28,8 +28,8 @@ public class ListPerformanceTest {
      */
     static void measure(List<Long> refList, long n) {
         List<Long> list;
-        StringBuilder sbResult = new StringBuilder();
-        StringBuilder sbHeading = new StringBuilder();
+        StringJoiner headingRow = new StringJoiner(",");
+        StringJoiner resultRow = new StringJoiner(",");
         try {
             //noinspection unchecked
             list = refList.getClass().newInstance();
@@ -38,62 +38,58 @@ public class ListPerformanceTest {
         }
         System.out.println("Measuring performance of " + list.getClass().getName() + " with " + n + " elements");
 
-        sbHeading.append("Class,N,");
-        sbResult.append(list.getClass().getName())
-                .append(",")
-                .append(n)
-                .append(",");
+        headingRow.add("Class").add("N");
+        resultRow.add(list.getClass().getName())
+                .add(Long.toString(n));
 
-        sbHeading.append("Append,");
+        headingRow.add("Append");
         s.tic();
         for (long i = 0; i < n; i++) {
             list.add(i);
         }
-        sbResult.append(s.toc()).append(",");
+        resultRow.add(Long.toString(s.toc()));
 
-        sbHeading.append("Get by index,");
+        headingRow.add("Get by index");
         s.tic();
         for (long i = 0; i < n; i++) {
             //noinspection ResultOfMethodCallIgnored - no need to store it
             list.get((int) i);
         }
-        sbResult.append(s.toc()).append(",");
+        resultRow.add(Long.toString(s.toc()));
 
-        sbHeading.append("Remove by index from beginning,");
+        headingRow.add("Remove by index from beginning");
         s.tic();
         for (int i = 0; i < n; i++) {
             list.remove(0);
         }
-        sbResult.append(s.toc()).append(",");
+        resultRow.add(Long.toString(s.toc()));
 
-        sbHeading.append("Remove by index from end,");
+        headingRow.add("Remove by index from end");
         populate(list, n);
         s.tic();
         //noinspection ListRemoveInLoop - subList not implemented in My*List
         for (int i = (int) (n - 1); i >= 0; i--) {
             list.remove(i);
         }
-        sbResult.append(s.toc()).append(",");
+        resultRow.add(Long.toString(s.toc()));
 
-        sbHeading.append("Insert in the middle,");
+        headingRow.add("Insert in the middle");
         list.clear();
         s.tic();
         for (long i = 0; i < n; i++) {
             list.add(list.size() / 2, i);
         }
-        sbResult.append(s.toc()).append(",");
+        resultRow.add(Long.toString(s.toc()));
 
-        sbHeading.append("Remove by object,");
+        headingRow.add("Remove by object");
         s.tic();
         for (long i = 0; i < n; i++) {
             list.remove(i);
         }
-        sbResult.append(s.toc()).append(",");
+        resultRow.add(Long.toString(s.toc()));
 
-        sbHeading.deleteCharAt(sbHeading.length() - 1);
-        sbResult.deleteCharAt(sbResult.length() - 1);
-        System.out.println(sbHeading);
-        System.out.println(sbResult);
+        System.out.println(headingRow);
+        System.out.println(resultRow);
     }
 
     public static void main(String[] args) {
