@@ -5,7 +5,7 @@ a String reference. Write a method that displays the stored String. Create a
 try-catch clause to exercise your new exception.
  */
 
-package main.java.chapter12_exceptions;
+package chapter12_exceptions;
 
 /*
 Following the task to the letter here, but could simply overwrite the

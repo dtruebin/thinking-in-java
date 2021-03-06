@@ -1,4 +1,4 @@
-package main.java.chapter14_typeinfo.pets;
+package chapter14_typeinfo.pets;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +8,14 @@ public class ForNameCreator extends PetCreator {
             new ArrayList<>();
     // Types that you want to be randomly created:
     private static final String[] typeNames = {
-            "main.java.chapter14_typeinfo.pets.Mutt",
-            "main.java.chapter14_typeinfo.pets.Pug",
-            "main.java.chapter14_typeinfo.pets.EgyptianMau",
-            "main.java.chapter14_typeinfo.pets.Manx",
-            "main.java.chapter14_typeinfo.pets.Cymric",
-            "main.java.chapter14_typeinfo.pets.Rat",
-            "main.java.chapter14_typeinfo.pets.Mouse",
-            "main.java.chapter14_typeinfo.pets.Hamster"
+            "chapter14_typeinfo.pets.Mutt",
+            "chapter14_typeinfo.pets.Pug",
+            "chapter14_typeinfo.pets.EgyptianMau",
+            "chapter14_typeinfo.pets.Manx",
+            "chapter14_typeinfo.pets.Cymric",
+            "chapter14_typeinfo.pets.Rat",
+            "chapter14_typeinfo.pets.Mouse",
+            "chapter14_typeinfo.pets.Hamster"
     };
 
     static {

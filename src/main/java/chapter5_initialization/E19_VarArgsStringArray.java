@@ -1,4 +1,4 @@
-package main.java.chapter5_initialization;
+package chapter5_initialization;
 
 public class E19_VarArgsStringArray {
     static void printStrings(String... strings) {

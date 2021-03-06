@@ -1,4 +1,4 @@
-package main.java.chapter4_control;
+package chapter4_control;
 
 public class E18_PrimeNumbers {
     static boolean isPrimeNumber(int n) {

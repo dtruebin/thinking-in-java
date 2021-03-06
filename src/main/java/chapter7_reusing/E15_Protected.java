@@ -1,7 +1,7 @@
-package main.java.chapter7_reusing;
+package chapter7_reusing;
 
-import main.java.chapter7_reusing.local.Apple;
-import main.java.chapter7_reusing.local.Fruit;
+import chapter7_reusing.local.Apple;
+import chapter7_reusing.local.Fruit;
 
 public class E15_Protected {
     public static void main(String[] args) {

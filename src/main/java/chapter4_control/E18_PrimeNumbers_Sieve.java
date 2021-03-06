@@ -1,4 +1,4 @@
-package main.java.chapter4_control;
+package chapter4_control;
 
 import static java.lang.Math.floor;
 import static java.lang.Math.sqrt;

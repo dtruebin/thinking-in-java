@@ -1,4 +1,4 @@
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 /*
 Create a class, then make an initialized array of objects of your class. Fill

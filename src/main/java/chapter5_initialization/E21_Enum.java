@@ -1,4 +1,4 @@
-package main.java.chapter5_initialization;
+package chapter5_initialization;
 
 public class E21_Enum {
     public static void main(String[] args) {

@@ -5,7 +5,7 @@ to
 "Arline ate eight apples and one orange while Anita hadn’t any"
  */
 
-package main.java.chapter13_strings;
+package chapter13_strings;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

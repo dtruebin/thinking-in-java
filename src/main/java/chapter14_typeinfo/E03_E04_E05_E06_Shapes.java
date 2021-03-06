@@ -18,7 +18,7 @@ particular type. The toString( ) method for each derived Shape should indicate
 whether that Shape is "highlighted."
  */
 
-package main.java.chapter14_typeinfo;
+package chapter14_typeinfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;

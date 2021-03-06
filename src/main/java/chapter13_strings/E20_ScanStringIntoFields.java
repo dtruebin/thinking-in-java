@@ -5,7 +5,7 @@ scans that string into the various fields. Add a toString( ) method and
 demonstrate that your class works correctly.
  */
 
-package main.java.chapter13_strings;
+package chapter13_strings;
 
 import java.util.Scanner;
 

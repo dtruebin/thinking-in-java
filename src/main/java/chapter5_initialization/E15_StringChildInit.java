@@ -1,4 +1,4 @@
-package main.java.chapter5_initialization;
+package chapter5_initialization;
 
 /**
  * Create a class with a String that is initialized using "instance initialization".

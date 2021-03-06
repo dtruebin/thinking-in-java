@@ -1,7 +1,7 @@
-package main.java.chapter11_holding;
+package chapter11_holding;
 
-import main.java.chapter8_polymorphism.shape.RandomShapeGenerator;
-import main.java.chapter8_polymorphism.shape.Shape;
+import chapter8_polymorphism.shape.RandomShapeGenerator;
+import chapter8_polymorphism.shape.Shape;
 
 public class E31_ShapesFromIterable {
     private static final RandomShapeGenerator gen = new RandomShapeGenerator(9);

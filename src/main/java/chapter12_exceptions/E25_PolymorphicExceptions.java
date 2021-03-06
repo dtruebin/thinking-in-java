@@ -6,7 +6,7 @@ hierarchy. Repeat by inheriting class C from B. In main( ), create a C and
 upcast it to A, then call the method.
  */
 
-package main.java.chapter12_exceptions;
+package chapter12_exceptions;
 
 class BaseException extends Exception {
 }

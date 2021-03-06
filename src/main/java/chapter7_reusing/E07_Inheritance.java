@@ -1,4 +1,4 @@
-package main.java.chapter7_reusing;
+package chapter7_reusing;
 
 class A7 {
     A7(String msg) {

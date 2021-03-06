@@ -1,4 +1,4 @@
-package main.java.chapter8_polymorphism;
+package chapter8_polymorphism;
 
 class Base {
     void f1() {

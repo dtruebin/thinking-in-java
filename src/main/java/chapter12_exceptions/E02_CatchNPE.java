@@ -4,7 +4,7 @@ through this reference. Now wrap the code in a try-catch clause to catch the
 exception.
  */
 
-package main.java.chapter12_exceptions;
+package chapter12_exceptions;
 
 public class E02_CatchNPE {
     public static void main(String[] args) {

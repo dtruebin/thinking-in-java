@@ -1,4 +1,4 @@
-package main.java.chapter4_control;
+package chapter4_control;
 
 public class E20_IfElse {
     static int test(int testval, int target) {

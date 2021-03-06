@@ -6,7 +6,7 @@ Exercise 27:
 Modify Exercise 3 to convert the exception to a RuntimeException.
  */
 
-package main.java.chapter12_exceptions;
+package chapter12_exceptions;
 
 @SuppressWarnings({"MismatchedReadAndWriteOfArray", "ConstantConditions"})
 public class E03_E27_ArrayIndexOutOfBoundsException {

@@ -1,4 +1,4 @@
-package main.java.chapter9_interfaces;
+package chapter9_interfaces;
 
 /*// before — need to downcast
 abstract class E04SuperClass {

@@ -1,4 +1,4 @@
-package main.java.chapter2_object;
+package chapter2_object;
 
 import java.lang.reflect.Field;
 

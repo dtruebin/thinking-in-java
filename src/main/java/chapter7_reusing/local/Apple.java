@@ -1,4 +1,4 @@
-package main.java.chapter7_reusing.local;
+package chapter7_reusing.local;
 
 public class Apple extends Fruit {
     public void lick() {

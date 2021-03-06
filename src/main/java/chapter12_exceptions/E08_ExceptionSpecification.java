@@ -5,7 +5,7 @@ compiler says. Add the appropriate exception specification. Try out your class
 and its exception inside a try-catch clause.
  */
 
-package main.java.chapter12_exceptions;
+package chapter12_exceptions;
 
 import java.util.Random;
 

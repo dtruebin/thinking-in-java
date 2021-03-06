@@ -1,4 +1,4 @@
-package main.java.chapter3_operators;
+package chapter3_operators;
 
 public class E08_LongToBinaryString {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package main.java.chapter2_object;
+package chapter2_object;
 
 @SuppressWarnings("unused")
 public class E07_Incrementable {

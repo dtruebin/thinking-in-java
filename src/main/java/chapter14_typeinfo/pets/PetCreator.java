@@ -1,5 +1,5 @@
 // Creates random sequences of Pets.
-package main.java.chapter14_typeinfo.pets;
+package chapter14_typeinfo.pets;
 
 import java.util.ArrayList;
 import java.util.Collections;

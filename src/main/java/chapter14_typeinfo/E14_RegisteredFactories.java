@@ -4,7 +4,7 @@ that instead of using an explicit factory, the class object is stored in the
 List, and newInstance( ) is used to create each object.
  */
 
-package main.java.chapter14_typeinfo;
+package chapter14_typeinfo;
 
 import java.util.Arrays;
 import java.util.List;

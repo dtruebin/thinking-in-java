@@ -2,7 +2,7 @@
 Modify Exercise 3 so that the catch clause logs the results.
  */
 
-package main.java.chapter12_exceptions;
+package chapter12_exceptions;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

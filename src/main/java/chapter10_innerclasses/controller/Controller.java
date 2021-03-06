@@ -1,11 +1,11 @@
-package main.java.chapter10_innerclasses.controller;
+package chapter10_innerclasses.controller;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Controller {
-    // A class from java.main.java.util to hold Event objects:
+    // A class from java.util to hold Event objects:
     private final List<Event> eventList = new LinkedList<>();
 
     public void addEvent(Event c) {

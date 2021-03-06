@@ -3,7 +3,7 @@ Create your own resumption-like behavior using a while loop that repeats until
 an exception is no longer thrown.
  */
 
-package main.java.chapter12_exceptions;
+package chapter12_exceptions;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package main.java.chapter2_object;
+package chapter2_object;
 
 public class E01_ClassWithNonInitializedFields {
     int i;

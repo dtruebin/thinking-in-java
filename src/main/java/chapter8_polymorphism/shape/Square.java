@@ -1,4 +1,4 @@
-package main.java.chapter8_polymorphism.shape;
+package chapter8_polymorphism.shape;
 
 public class Square extends Shape {
     @Override

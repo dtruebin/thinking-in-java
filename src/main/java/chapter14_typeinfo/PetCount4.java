@@ -1,8 +1,8 @@
-package main.java.chapter14_typeinfo;
+package chapter14_typeinfo;
 
-import main.java.chapter14_typeinfo.pets.Pet;
-import main.java.chapter14_typeinfo.pets.Pets;
-import main.java.util.TypeCounter;
+import chapter14_typeinfo.pets.Pet;
+import chapter14_typeinfo.pets.Pets;
+import util.TypeCounter;
 
 public class PetCount4 {
     public static void main(String[] args) {

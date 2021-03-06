@@ -1,4 +1,4 @@
-package main.java.chapter14_typeinfo.pets;
+package chapter14_typeinfo.pets;
 
 public class Cymric extends Manx {
     public Cymric(String name) {
@@ -9,7 +9,7 @@ public class Cymric extends Manx {
         super();
     }
 
-    public static class Factory implements main.java.chapter14_typeinfo.factory.Factory<Cymric> {
+    public static class Factory implements chapter14_typeinfo.factory.Factory<Cymric> {
         @Override
         public Cymric create() {
             return new Cymric();

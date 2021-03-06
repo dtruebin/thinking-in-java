@@ -3,7 +3,7 @@ Fill a LinkedHashMap with String keys and objects of your choice. Now extract
 the pairs, sort them based on the keys, and reinsert them into the Map.
  */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;

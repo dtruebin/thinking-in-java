@@ -1,4 +1,4 @@
-package main.java.chapter2_object;
+package chapter2_object;
 
 public class E10_PrintArgs {
     public static void main(String[] args) {

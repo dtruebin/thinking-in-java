@@ -1,7 +1,7 @@
-package main.java.chapter6_access;
+package chapter6_access;
 
-import main.java.chapter6_access.connection.Connection;
-import main.java.chapter6_access.connection.ConnectionManager;
+import chapter6_access.connection.Connection;
+import chapter6_access.connection.ConnectionManager;
 
 public class E08_ConnectionManager {
 

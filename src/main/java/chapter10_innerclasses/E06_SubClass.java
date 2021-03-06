@@ -1,7 +1,7 @@
-package main.java.chapter10_innerclasses;
+package chapter10_innerclasses;
 
-import main.java.chapter10_innerclasses.local.E06_Interface;
-import main.java.chapter10_innerclasses.local2.E06_ClassWithInner;
+import chapter10_innerclasses.local.E06_Interface;
+import chapter10_innerclasses.local2.E06_ClassWithInner;
 
 public class E06_SubClass extends E06_ClassWithInner {
     public static void main(String[] args) {

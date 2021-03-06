@@ -4,7 +4,7 @@ code. Extract the pairs, sort by key, and place the result into a LinkedHashMap.
 Show that the insertion order is maintained.
  */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.Arrays;
 import java.util.HashMap;

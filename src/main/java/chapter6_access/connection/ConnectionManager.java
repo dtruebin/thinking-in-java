@@ -1,4 +1,4 @@
-package main.java.chapter6_access.connection;
+package chapter6_access.connection;
 
 public class ConnectionManager {
     private static final Connection[] pool = new Connection[5];

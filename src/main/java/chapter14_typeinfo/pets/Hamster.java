@@ -1,4 +1,4 @@
-package main.java.chapter14_typeinfo.pets;
+package chapter14_typeinfo.pets;
 
 public class Hamster extends Rodent {
     public Hamster(String name) {
@@ -9,7 +9,7 @@ public class Hamster extends Rodent {
         super();
     }
 
-    public static class Factory implements main.java.chapter14_typeinfo.factory.Factory<Hamster> {
+    public static class Factory implements chapter14_typeinfo.factory.Factory<Hamster> {
         @Override
         public Hamster create() {
             return new Hamster();

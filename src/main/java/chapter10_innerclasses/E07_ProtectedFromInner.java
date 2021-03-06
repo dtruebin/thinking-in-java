@@ -1,4 +1,4 @@
-package main.java.chapter10_innerclasses;
+package chapter10_innerclasses;
 
 /**
  * This exercise shows that inner classes have transparent access to their outer

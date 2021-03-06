@@ -10,7 +10,7 @@ Repeat the previous exercise, but inside the catch clause, wrap g( )’s excepti
 in a RuntimeException.
  */
 
-package main.java.chapter12_exceptions;
+package chapter12_exceptions;
 
 class CustomException1 extends Exception {
 }

@@ -1,6 +1,6 @@
-package main.java.chapter10_innerclasses.local2;
+package chapter10_innerclasses.local2;
 
-import main.java.chapter10_innerclasses.local.E06_Interface;
+import chapter10_innerclasses.local.E06_Interface;
 
 public class E06_ClassWithInner {
     protected class Inner implements E06_Interface {

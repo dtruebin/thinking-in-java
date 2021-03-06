@@ -5,7 +5,7 @@ and insert them into the second in reverse order. (You may want to explore
 a number of different ways to solve this problem.)
  */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.*;
 

@@ -2,7 +2,7 @@
 Modify Exercise 16 so that you keep a count of the occurrence of each vowel.
  */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.*;
 

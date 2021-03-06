@@ -1,4 +1,4 @@
-package main.java.chapter3_operators;
+package chapter3_operators;
 
 import java.util.Random;
 

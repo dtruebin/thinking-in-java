@@ -1,4 +1,4 @@
-package main.java.chapter5_initialization;
+package chapter5_initialization;
 
 class SomeClass {
     static String str = "hello";

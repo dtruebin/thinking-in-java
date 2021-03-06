@@ -1,4 +1,4 @@
-package main.java.chapter3_operators;
+package chapter3_operators;
 
 public class E10_BitwiseOperations {
     public static void main(String[] args) {

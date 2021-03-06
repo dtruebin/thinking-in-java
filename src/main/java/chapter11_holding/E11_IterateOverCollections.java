@@ -4,7 +4,7 @@ the toString( ) of each object in the container. Fill all the different types
 of Collections with objects and apply your method to each container.
  */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.*;
 

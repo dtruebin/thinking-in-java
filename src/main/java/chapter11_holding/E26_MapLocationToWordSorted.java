@@ -3,7 +3,7 @@ Take the resulting Map from the previous exercise and re-create the order
 of the words as they appeared in the original file.
  */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.ArrayList;
 import java.util.HashMap;

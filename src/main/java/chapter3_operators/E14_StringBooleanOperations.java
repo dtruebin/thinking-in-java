@@ -1,4 +1,4 @@
-package main.java.chapter3_operators;
+package chapter3_operators;
 
 public class E14_StringBooleanOperations {
 

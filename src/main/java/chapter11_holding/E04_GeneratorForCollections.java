@@ -1,4 +1,4 @@
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.*;
 

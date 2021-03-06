@@ -1,5 +1,5 @@
 // Using class literals.
-package main.java.chapter14_typeinfo.pets;
+package chapter14_typeinfo.pets;
 
 import java.util.Arrays;
 import java.util.Collections;

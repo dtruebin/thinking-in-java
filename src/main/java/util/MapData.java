@@ -1,5 +1,5 @@
 // A Map filled with data using a generator object.
-package main.java.util;
+package util;
 
 import java.util.LinkedHashMap;
 

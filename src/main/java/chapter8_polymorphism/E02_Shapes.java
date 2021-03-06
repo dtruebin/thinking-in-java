@@ -1,7 +1,7 @@
-package main.java.chapter8_polymorphism;
+package chapter8_polymorphism;
 
-import main.java.chapter8_polymorphism.shape.RandomShapeGenerator;
-import main.java.chapter8_polymorphism.shape.Shape;
+import chapter8_polymorphism.shape.RandomShapeGenerator;
+import chapter8_polymorphism.shape.Shape;
 
 public class E02_Shapes {
     private static final RandomShapeGenerator gen = new RandomShapeGenerator();

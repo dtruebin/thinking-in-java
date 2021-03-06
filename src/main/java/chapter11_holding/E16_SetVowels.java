@@ -4,7 +4,7 @@ the number of vowels in each input word, and also display the total number
 of vowels in the input file.
  */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.Arrays;
 import java.util.HashSet;

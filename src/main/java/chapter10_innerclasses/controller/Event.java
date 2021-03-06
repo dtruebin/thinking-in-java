@@ -1,4 +1,4 @@
-package main.java.chapter10_innerclasses.controller;
+package chapter10_innerclasses.controller;
 
 
 public abstract class Event {

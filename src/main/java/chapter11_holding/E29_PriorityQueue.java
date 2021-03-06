@@ -5,7 +5,7 @@ PriorityQueue. This issue will be fully explained in the Containers in Depth
 chapter.
  */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.PriorityQueue;
 import java.util.Queue;

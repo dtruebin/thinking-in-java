@@ -1,4 +1,4 @@
-package main.java.chapter10_innerclasses;
+package chapter10_innerclasses;
 
 interface Selector {
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")

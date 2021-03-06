@@ -5,7 +5,7 @@ exception inside a catch clause and print the String argument. Add a finally
 clause and print a message to prove you were there.
  */
 
-package main.java.chapter12_exceptions;
+package chapter12_exceptions;
 
 public class E01_BasicExceptionThrowCatch {
     public static void main(String[] args) {

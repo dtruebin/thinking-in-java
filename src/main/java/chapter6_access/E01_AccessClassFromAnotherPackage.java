@@ -1,10 +1,10 @@
-package main.java.chapter6_access;
+package chapter6_access;
 
-import main.java.chapter5_initialization.E21_Enum;
+import chapter5_initialization.E21_Enum;
 
-import static main.java.util.Print.print;
-import static main.java.util.Print.printnb;
-import static main.java.util.Range.range;
+import static util.Print.print;
+import static util.Print.printnb;
+import static util.Range.range;
 
 public class E01_AccessClassFromAnotherPackage {
     public static void main(String[] args) {

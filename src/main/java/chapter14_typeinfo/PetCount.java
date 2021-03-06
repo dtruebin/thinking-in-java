@@ -1,7 +1,7 @@
 // Using instanceof
-package main.java.chapter14_typeinfo;
+package chapter14_typeinfo;
 
-import main.java.chapter14_typeinfo.pets.*;
+import chapter14_typeinfo.pets.*;
 
 import java.util.HashMap;
 

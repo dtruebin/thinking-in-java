@@ -1,4 +1,4 @@
-package main.java.chapter9_interfaces.local;
+package chapter9_interfaces.local;
 
 public interface E05_Animal {
     void whoami();

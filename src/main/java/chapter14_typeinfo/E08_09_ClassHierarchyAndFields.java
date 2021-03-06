@@ -8,7 +8,7 @@ Modify the previous exercise so that it uses Class.getDeclaredFields( ) to also
 display information about the fields in a class.
  */
 
-package main.java.chapter14_typeinfo;
+package chapter14_typeinfo;
 
 import java.lang.reflect.Field;
 

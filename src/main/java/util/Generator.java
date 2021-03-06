@@ -1,5 +1,5 @@
 // A generic interface.
-package main.java.util;
+package util;
 
 public interface Generator<T> {
     T next();

@@ -1,4 +1,4 @@
-package main.java.chapter10_innerclasses;
+package chapter10_innerclasses;
 
 class E05Outer {
     class E05Inner {

@@ -1,4 +1,4 @@
-package main.java.chapter10_innerclasses;
+package chapter10_innerclasses;
 
 public class E03_InnerOuter {
     public static void main(String[] args) {

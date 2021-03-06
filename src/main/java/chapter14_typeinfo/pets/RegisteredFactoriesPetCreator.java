@@ -3,9 +3,9 @@ Implement a new PetCreator using Registered Factories, and modify the Pets
 Facade so that it uses this one instead of the other two. Ensure that the rest
 of the examples that use Pets.java still work correctly.
  */
-package main.java.chapter14_typeinfo.pets;
+package chapter14_typeinfo.pets;
 
-import main.java.chapter14_typeinfo.factory.Factory;
+import chapter14_typeinfo.factory.Factory;
 
 import java.util.ArrayList;
 import java.util.List;

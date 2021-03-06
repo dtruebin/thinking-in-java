@@ -1,4 +1,4 @@
-package main.java.chapter8_polymorphism.shape;
+package chapter8_polymorphism.shape;
 
 import java.util.Iterator;
 import java.util.Random;

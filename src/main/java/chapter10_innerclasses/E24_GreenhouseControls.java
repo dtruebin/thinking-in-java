@@ -1,7 +1,7 @@
-package main.java.chapter10_innerclasses;
+package chapter10_innerclasses;
 
-import main.java.chapter10_innerclasses.controller.Controller;
-import main.java.chapter10_innerclasses.controller.Event;
+import chapter10_innerclasses.controller.Controller;
+import chapter10_innerclasses.controller.Event;
 
 public class E24_GreenhouseControls extends Controller {
     private boolean light = false;

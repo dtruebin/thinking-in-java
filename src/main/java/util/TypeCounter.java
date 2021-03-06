@@ -1,5 +1,5 @@
 // Counts instances of a type family.
-package main.java.util;
+package util;
 
 import java.util.HashMap;
 

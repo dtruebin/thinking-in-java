@@ -1,4 +1,4 @@
-package main.java.chapter9_interfaces.interfaceprocessor;
+package chapter9_interfaces.interfaceprocessor;
 
 public interface Processor {
     String name();

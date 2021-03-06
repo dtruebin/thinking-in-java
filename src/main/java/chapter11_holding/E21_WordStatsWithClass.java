@@ -7,7 +7,7 @@ Additionally, try a TreeSet instead of a bare HashSet to maintain the list of
 words, and compare what (if any) improvement this makes to the program.
  */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.*;
 

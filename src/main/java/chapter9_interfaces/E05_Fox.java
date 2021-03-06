@@ -1,6 +1,6 @@
-package main.java.chapter9_interfaces;
+package chapter9_interfaces;
 
-import main.java.chapter9_interfaces.local.E05_Animal;
+import chapter9_interfaces.local.E05_Animal;
 
 public class E05_Fox implements E05_Animal {
     public static void main(String[] args) {

@@ -3,7 +3,7 @@ Create an empty LinkedList<Integer>. Using a ListIterator, add Integers to
 the List by always inserting them in the middle of the List.
  */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.LinkedList;
 import java.util.ListIterator;

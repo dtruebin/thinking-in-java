@@ -7,7 +7,7 @@ with that word - this is, in effect, the location in the file where that word
 was found.
 */
 
-package main.java.chapter11_holding;
+package chapter11_holding;
 
 import java.util.ArrayList;
 import java.util.HashMap;

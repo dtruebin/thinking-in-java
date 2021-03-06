@@ -1,6 +1,6 @@
-package main.java.chapter10_innerclasses;
+package chapter10_innerclasses;
 
-import main.java.chapter10_innerclasses.controller.Event;
+import chapter10_innerclasses.controller.Event;
 
 public class E25_GreenhouseController extends E24_GreenhouseController {
     public static void main(String[] args) {

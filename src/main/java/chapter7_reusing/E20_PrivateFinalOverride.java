@@ -1,4 +1,4 @@
-package main.java.chapter7_reusing;
+package chapter7_reusing;
 
 class WithFinals {
     @SuppressWarnings("FinalPrivateMethod")

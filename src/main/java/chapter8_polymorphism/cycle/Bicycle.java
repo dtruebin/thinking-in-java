@@ -1,4 +1,4 @@
-package main.java.chapter8_polymorphism.cycle;
+package chapter8_polymorphism.cycle;
 
 public class Bicycle extends Cycle {
     public void ride() {

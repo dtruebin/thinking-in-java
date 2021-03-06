@@ -1,4 +1,4 @@
-package main.java.chapter4_control;
+package chapter4_control;
 
 public class PrimeNumbers_Compare {
     public static void main(String[] args) {

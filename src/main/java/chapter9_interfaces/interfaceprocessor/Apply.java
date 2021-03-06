@@ -1,4 +1,4 @@
-package main.java.chapter9_interfaces.interfaceprocessor;
+package chapter9_interfaces.interfaceprocessor;
 
 public class Apply {
     public static void process(Processor p, Object s) {

@@ -1,4 +1,4 @@
-package main.java.chapter9_interfaces;
+package chapter9_interfaces;
 
 interface Cycle {
     int getWheels();

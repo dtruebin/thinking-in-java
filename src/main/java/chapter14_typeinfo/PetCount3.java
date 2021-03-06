@@ -1,10 +1,10 @@
 // Using isInstance()
-package main.java.chapter14_typeinfo;
+package chapter14_typeinfo;
 
-import main.java.chapter14_typeinfo.pets.LiteralPetCreator;
-import main.java.chapter14_typeinfo.pets.Pet;
-import main.java.chapter14_typeinfo.pets.Pets;
-import main.java.util.MapData;
+import chapter14_typeinfo.pets.LiteralPetCreator;
+import chapter14_typeinfo.pets.Pet;
+import chapter14_typeinfo.pets.Pets;
+import util.MapData;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

@@ -3,9 +3,9 @@
  * methods in Wind, Percussion and Stringed into
  * an abstract class.
  ***********************************************/
-package main.java.chapter9_interfaces;
+package chapter9_interfaces;
 
-import main.java.chapter8_polymorphism.music.Note;
+import chapter8_polymorphism.music.Note;
 
 interface Instrument {
     void adjust();
