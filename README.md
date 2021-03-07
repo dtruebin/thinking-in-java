@@ -1,3 +1,5 @@
+[![Java CI with Maven](https://github.com/dtruebin/thinking-in-java/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/dtruebin/thinking-in-java/actions/workflows/maven.yml)
+
 ## Running Tests
 
 ### Regular Tests
