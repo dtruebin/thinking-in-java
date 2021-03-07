@@ -27,4 +27,10 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package org.pitest:pitest-maven:mutationCoverage --file pom.xml
+    - run: mkdir mutation-testing-report && cp -r target/pit-reports/* mutation-testing-report
+    - name: Archive mutation testing results
+      uses: actions/upload-artifact@v2
+      with:
+        name: mutation-testing-report
+        path: pit-report
