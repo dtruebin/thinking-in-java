@@ -108,29 +108,35 @@ class MyArrayListTest {
     @Test
     void addAtIndexFirst() {
         int value = rand.nextInt();
+        Integer oldFirst = list.get(0);
 
         list.add(0, value);
 
         assertEquals(value, list.get(0));
+        assertEquals(oldFirst, list.get(1));
     }
 
     @Test
     void addAtIndexMiddle() {
         int value = rand.nextInt();
         int sizeAtStart = list.size();
+        Integer oldMiddle = list.get(sizeAtStart / 2);
 
         list.add(sizeAtStart / 2, value);
 
         assertEquals(value, list.get(sizeAtStart / 2));
+        assertEquals(oldMiddle, list.get(sizeAtStart / 2 + 1));
     }
 
     @Test
     void addAtIndexLast() {
         int value = rand.nextInt();
         int sizeAtStart = list.size();
+        Integer oldLast = list.get(sizeAtStart - 1);
 
         list.add(sizeAtStart, value);
 
+        assertEquals(oldLast, list.get(list.size() - 2));
         assertEquals(value, list.get(list.size() - 1));
     }
 
@@ -138,10 +144,12 @@ class MyArrayListTest {
     void addAtIndexSecondToLast() {
         int value = rand.nextInt();
         int sizeAtStart = list.size();
+        Integer oldLast = list.get(sizeAtStart - 1);
 
         list.add(sizeAtStart - 1, value);
 
         assertEquals(value, list.get(list.size() - 2));
+        assertEquals(oldLast, list.get(list.size() - 1));
     }
 
     @Test
