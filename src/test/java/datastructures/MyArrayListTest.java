@@ -71,13 +71,18 @@ class MyArrayListTest {
         assertArrayEquals(new Integer[0], list.toArray());
     }
 
-    @SuppressWarnings({"SimplifiableAssertion", "ResultOfMethodCallIgnored"})
+    @SuppressWarnings({"SimplifiableAssertion"})
     @Test
     void get() {
         assertEquals(1, list.get(0));
         assertEquals(2, list.get(1));
         assertEquals(null, list.get(3));
         assertEquals(5, list.get(4));
+    }
+
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    @Test
+    void getAtBadIndexThrowsException() {
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(-1));
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(list.size() + 1));
     }
@@ -101,22 +106,47 @@ class MyArrayListTest {
     }
 
     @Test
-    void addAtIndex() {
+    void addAtIndexFirst() {
         int value = rand.nextInt();
-        int sizeAtStart = list.size();
-        int additions = 0;
 
-        // Add to end, [somewhere in the] middle, and beginning
-        int[] indexes = {sizeAtStart, sizeAtStart / 2, 0};
-        for (int index : indexes) {
-            list.add(index, value);
-            additions++;
-        }
+        list.add(0, value);
 
         assertEquals(value, list.get(0));
+    }
+
+    @Test
+    void addAtIndexMiddle() {
+        int value = rand.nextInt();
+        int sizeAtStart = list.size();
+
+        list.add(sizeAtStart / 2, value);
+
         assertEquals(value, list.get(sizeAtStart / 2));
-        assertEquals(value, list.get(sizeAtStart));
-        assertEquals(sizeAtStart + additions, list.size());
+    }
+
+    @Test
+    void addAtIndexLast() {
+        int value = rand.nextInt();
+        int sizeAtStart = list.size();
+
+        list.add(sizeAtStart, value);
+
+        assertEquals(value, list.get(list.size() - 1));
+    }
+
+    @Test
+    void addAtIndexSecondToLast() {
+        int value = rand.nextInt();
+        int sizeAtStart = list.size();
+
+        list.add(sizeAtStart - 1, value);
+
+        assertEquals(value, list.get(list.size() - 2));
+    }
+
+    @Test
+    void addAtBadIndexThrowsException() {
+        int value = rand.nextInt();
         assertThrows(IndexOutOfBoundsException.class, () -> list.add(-1, value));
         assertThrows(IndexOutOfBoundsException.class, () -> list.add(list.size() + 1, value));
     }
