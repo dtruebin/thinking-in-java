@@ -50,7 +50,7 @@ class MyArrayListTest {
         assertArrayEquals(arrExpected, list.toArray(arrBiggerThanListSize));
 
         //noinspection ConstantConditions
-        assertThrows(NullPointerException.class, () -> list.toArray(null));
+        assertThrows(NullPointerException.class, () -> list.toArray((Object[]) null));
     }
 
     @Test
