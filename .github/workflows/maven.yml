@@ -35,5 +35,5 @@ jobs:
     - name: Archive mutation testing results
       uses: actions/upload-artifact@v2
       with:
-        name: mutation-testing-report
-        path: mutation-testing-report-${{ matrix.java }}
+        name: mutation-testing-report-${{ matrix.java }}
+        path: mutation-testing-report
