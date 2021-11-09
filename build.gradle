@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'info.solidsoft.pitest' version '1.7.0'
+}
+
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+pitest {
+    junit5PluginVersion = '0.15'
+    pitestVersion = '1.7.3' // default is the same as plugin version
+    targetClasses = ['icu.trub.*']
+    withHistory = System.getProperty('withHistory', 'false').toBoolean()
+}
