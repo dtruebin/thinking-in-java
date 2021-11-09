@@ -27,4 +27,5 @@ pitest {
     junit5PluginVersion = '0.15'
     pitestVersion = '1.7.3' // default is the same as plugin version
     targetClasses = ['icu.trub.*']
+    withHistory = System.getProperty('withHistory', 'false').toBoolean()
 }
