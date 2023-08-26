@@ -1,8 +1,9 @@
 plugins {
     id 'java'
-    id 'info.solidsoft.pitest' version '1.7.0'
+    id 'info.solidsoft.pitest' version '1.9.11'
 }
 
+group = 'icu.trub'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -10,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -24,8 +25,7 @@ test {
 }
 
 pitest {
-    junit5PluginVersion = '0.15'
-    pitestVersion = '1.7.3' // default is the same as plugin version
-    targetClasses = ['icu.trub.*']
+    junit5PluginVersion = '1.1.2'
+    timestampedReports = true
     withHistory = System.getProperty('withHistory', 'false').toBoolean()
 }
