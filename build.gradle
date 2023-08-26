@@ -10,18 +10,31 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+// To upgrade Gradle, change gradleVersion and run task 'wrapper'
+tasks.named('wrapper', Wrapper) {
+    gradleVersion = 8.3
+    distributionType = Wrapper.DistributionType.ALL
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
 
-tasks.withType(JavaCompile) {
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-test {
+tasks.named('test', Test) {
     useJUnitPlatform()
+}
+
+tasks.named('check') {
+    dependsOn 'pitest'
 }
 
 pitest {

@@ -27,7 +27,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
-        run: ./gradlew build pitest
+        run: ./gradlew build
       - run: mkdir mutation-testing-report && cp -r build/reports/pitest/* mutation-testing-report
       - name: Archive mutation testing results
         uses: actions/upload-artifact@v2
