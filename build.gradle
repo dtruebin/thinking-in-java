@@ -3,6 +3,7 @@ plugins {
     id 'info.solidsoft.pitest' version '1.9.11'
 }
 
+group = 'icu.trub'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -25,7 +26,6 @@ test {
 
 pitest {
     junit5PluginVersion = '1.1.2'
-    targetClasses = ['icu.trub.*']
     timestampedReports = true
     withHistory = System.getProperty('withHistory', 'false').toBoolean()
 }
