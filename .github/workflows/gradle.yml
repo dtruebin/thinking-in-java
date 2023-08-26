@@ -30,7 +30,7 @@ jobs:
         run: ./gradlew build
       - run: mkdir mutation-testing-report && cp -r build/reports/pitest/* mutation-testing-report
       - name: Archive mutation testing results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: mutation-testing-report-${{ matrix.java }}
           path: mutation-testing-report
