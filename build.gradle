@@ -33,6 +33,10 @@ tasks.named('test', Test) {
     useJUnitPlatform()
 }
 
+tasks.named('check') {
+    dependsOn 'pitest'
+}
+
 pitest {
     junit5PluginVersion = '1.1.2'
     timestampedReports = true
