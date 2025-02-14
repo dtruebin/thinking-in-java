@@ -20,6 +20,8 @@ jobs:
             java: 11
           - title: Java 17
             java: 17
+          - title: Java 21
+            java: 21
     steps:
       - name: Checkout
         uses: actions/checkout@v4
