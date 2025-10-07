@@ -21,8 +21,9 @@ jobs:
             java: 17
           - title: Java 21
             java: 21
-          - title: Java 25
-            java: 25
+#          todo #41
+#          - title: Java 25
+#            java: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v5
