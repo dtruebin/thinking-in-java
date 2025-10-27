@@ -40,7 +40,7 @@ jobs:
       - name: Collect mutation testing report
         run: mkdir mutation-testing-report && cp -r build/reports/pitest/* mutation-testing-report
       - name: Archive mutation testing results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: mutation-testing-report-${{ matrix.java }}
           path: mutation-testing-report
