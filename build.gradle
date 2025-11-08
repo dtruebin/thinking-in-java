@@ -12,7 +12,7 @@ repositories {
 
 // To upgrade Gradle, change gradleVersion and run task 'wrapper'
 tasks.named('wrapper', Wrapper) {
-    gradleVersion = 8.3
+    gradleVersion = '8.14.3'
     distributionType = Wrapper.DistributionType.ALL
 }
 
