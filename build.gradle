@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'info.solidsoft.pitest' version '1.15.0'
+    id 'info.solidsoft.pitest' version '1.19.0-rc.2'
 }
 
 group = 'icu.trub'
@@ -12,7 +12,7 @@ repositories {
 
 // To upgrade Gradle, change gradleVersion and run task 'wrapper'
 tasks.named('wrapper', Wrapper) {
-    gradleVersion = 8.3
+    gradleVersion = '9.2.0'
     distributionType = Wrapper.DistributionType.ALL
 }
 
