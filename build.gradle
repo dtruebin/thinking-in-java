@@ -10,12 +10,6 @@ repositories {
     mavenCentral()
 }
 
-// To upgrade Gradle, change gradleVersion and run task 'wrapper'
-tasks.named('wrapper', Wrapper) {
-    gradleVersion = '9.2.0'
-    distributionType = Wrapper.DistributionType.ALL
-}
-
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:6.0.3'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
